@@ -23,6 +23,10 @@
 		1D4B3EA717825D8200C9F649 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1D4B3E8217825D8200C9F649 /* Foundation.framework */; };
 		1D4B3EAF17825D8200C9F649 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 1D4B3EAD17825D8200C9F649 /* InfoPlist.strings */; };
 		1D4B3EB217825D8200C9F649 /* Geeks_Who_DrankTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 1D4B3EB117825D8200C9F649 /* Geeks_Who_DrankTests.m */; };
+		1D4B3EBD178260AE00C9F649 /* Quiz.m in Sources */ = {isa = PBXBuildFile; fileRef = 1D4B3EBC178260AE00C9F649 /* Quiz.m */; };
+		1D4B3EC117836E4500C9F649 /* QuizQuestion.m in Sources */ = {isa = PBXBuildFile; fileRef = 1D4B3EC017836E4500C9F649 /* QuizQuestion.m */; };
+		1D4B3EC417836E9000C9F649 /* QuizRound.m in Sources */ = {isa = PBXBuildFile; fileRef = 1D4B3EC317836E9000C9F649 /* QuizRound.m */; };
+		1D4B3EC71783714A00C9F649 /* QuizEvent.m in Sources */ = {isa = PBXBuildFile; fileRef = 1D4B3EC61783714A00C9F649 /* QuizEvent.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -58,6 +62,14 @@
 		1D4B3EAE17825D8200C9F649 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		1D4B3EB017825D8200C9F649 /* Geeks_Who_DrankTests.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Geeks_Who_DrankTests.h; sourceTree = "<group>"; };
 		1D4B3EB117825D8200C9F649 /* Geeks_Who_DrankTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Geeks_Who_DrankTests.m; sourceTree = "<group>"; };
+		1D4B3EBB178260AE00C9F649 /* Quiz.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Quiz.h; path = Model/Quiz.h; sourceTree = "<group>"; };
+		1D4B3EBC178260AE00C9F649 /* Quiz.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Quiz.m; path = Model/Quiz.m; sourceTree = "<group>"; };
+		1D4B3EBF17836E4500C9F649 /* QuizQuestion.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = QuizQuestion.h; path = Model/QuizQuestion.h; sourceTree = "<group>"; };
+		1D4B3EC017836E4500C9F649 /* QuizQuestion.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = QuizQuestion.m; path = Model/QuizQuestion.m; sourceTree = "<group>"; };
+		1D4B3EC217836E9000C9F649 /* QuizRound.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = QuizRound.h; path = Model/QuizRound.h; sourceTree = "<group>"; };
+		1D4B3EC317836E9000C9F649 /* QuizRound.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = QuizRound.m; path = Model/QuizRound.m; sourceTree = "<group>"; };
+		1D4B3EC51783714A00C9F649 /* QuizEvent.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = QuizEvent.h; path = Model/QuizEvent.h; sourceTree = "<group>"; };
+		1D4B3EC61783714A00C9F649 /* QuizEvent.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = QuizEvent.m; path = Model/QuizEvent.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -117,8 +129,7 @@
 		1D4B3E8617825D8200C9F649 /* Geeks Who Drank */ = {
 			isa = PBXGroup;
 			children = (
-				1D4B3E8F17825D8200C9F649 /* AppDelegate.h */,
-				1D4B3E9017825D8200C9F649 /* AppDelegate.m */,
+				1D4B3EBE178260BE00C9F649 /* Model */,
 				1D4B3E9817825D8200C9F649 /* MainStoryboard.storyboard */,
 				1D4B3E9B17825D8200C9F649 /* ViewController.h */,
 				1D4B3E9C17825D8200C9F649 /* ViewController.m */,
@@ -130,6 +141,8 @@
 		1D4B3E8717825D8200C9F649 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				1D4B3E8F17825D8200C9F649 /* AppDelegate.h */,
+				1D4B3E9017825D8200C9F649 /* AppDelegate.m */,
 				1D4B3E8817825D8200C9F649 /* Geeks Who Drank-Info.plist */,
 				1D4B3E8917825D8200C9F649 /* InfoPlist.strings */,
 				1D4B3E8C17825D8200C9F649 /* main.m */,
@@ -158,6 +171,21 @@
 				1D4B3EAD17825D8200C9F649 /* InfoPlist.strings */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		1D4B3EBE178260BE00C9F649 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				1D4B3EC51783714A00C9F649 /* QuizEvent.h */,
+				1D4B3EC61783714A00C9F649 /* QuizEvent.m */,
+				1D4B3EBB178260AE00C9F649 /* Quiz.h */,
+				1D4B3EBC178260AE00C9F649 /* Quiz.m */,
+				1D4B3EC217836E9000C9F649 /* QuizRound.h */,
+				1D4B3EC317836E9000C9F649 /* QuizRound.m */,
+				1D4B3EBF17836E4500C9F649 /* QuizQuestion.h */,
+				1D4B3EC017836E4500C9F649 /* QuizQuestion.m */,
+			);
+			name = Model;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -273,6 +301,10 @@
 				1D4B3E8D17825D8200C9F649 /* main.m in Sources */,
 				1D4B3E9117825D8200C9F649 /* AppDelegate.m in Sources */,
 				1D4B3E9D17825D8200C9F649 /* ViewController.m in Sources */,
+				1D4B3EBD178260AE00C9F649 /* Quiz.m in Sources */,
+				1D4B3EC117836E4500C9F649 /* QuizQuestion.m in Sources */,
+				1D4B3EC417836E9000C9F649 /* QuizRound.m in Sources */,
+				1D4B3EC71783714A00C9F649 /* QuizEvent.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -385,6 +417,7 @@
 				GCC_PREFIX_HEADER = "Geeks Who Drank/Geeks Who Drank-Prefix.pch";
 				INFOPLIST_FILE = "Geeks Who Drank/Geeks Who Drank-Info.plist";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				TARGETED_DEVICE_FAMILY = 1;
 				WRAPPER_EXTENSION = app;
 			};
 			name = Debug;
@@ -396,6 +429,7 @@
 				GCC_PREFIX_HEADER = "Geeks Who Drank/Geeks Who Drank-Prefix.pch";
 				INFOPLIST_FILE = "Geeks Who Drank/Geeks Who Drank-Info.plist";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				TARGETED_DEVICE_FAMILY = 1;
 				WRAPPER_EXTENSION = app;
 			};
 			name = Release;
