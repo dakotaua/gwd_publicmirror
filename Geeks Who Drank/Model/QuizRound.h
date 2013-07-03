@@ -12,7 +12,7 @@
 @interface QuizRound : NSObject
 
 @property (nonatomic) int roundNumber;
-@property (strong, nonatomic) NSArray *questions;
+@property (strong, nonatomic) NSMutableArray *questions;
 @property (nonatomic, getter=isJokered) BOOL jokered;
 
 -(int)roundScore;

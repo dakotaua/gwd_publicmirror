@@ -10,5 +10,22 @@
 
 @implementation QuizEvent
 
+-(NSMutableArray *)quizzes {
+
+    if (!_quizzes) _quizzes = [[NSMutableArray alloc] init];
+    return _quizzes;
+}
+
+-(NSOrderedSet *)standings {
+    
+    if (!_standings) _standings = [[NSOrderedSet alloc] init];
+    return _standings;
+}
+
+-(NSString *)quizMaster {
+    
+    if(!_quizMaster) _quizMaster = @"";
+    return _quizMaster;
+}
 
 @end

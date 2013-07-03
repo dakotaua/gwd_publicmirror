@@ -12,8 +12,8 @@
 
 @property (strong, nonatomic) NSString *quizMaster;
 @property (strong, nonatomic) NSString *location;
-@property (strong, nonatomic) NSDate *date;
-@property (strong, nonatomic) NSArray *quizzes;
+@property (strong, nonatomic) NSDate *quizDate;
+@property (strong, nonatomic) NSMutableArray *quizzes;
 @property (strong, nonatomic) NSOrderedSet *standings;
 
 -(void)uploadEvent;
