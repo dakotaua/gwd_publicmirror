@@ -13,8 +13,9 @@
 
 @property (strong, nonatomic) NSString *teamName;
 @property (nonatomic) int jokerRound;
-@property (strong, nonatomic) NSArray *quizRounds;
+@property (strong, nonatomic) NSMutableArray *quizRounds;
 
 -(int)quizScore;
+-(id)initWithName:(NSString*)teamName;
 
 @end
