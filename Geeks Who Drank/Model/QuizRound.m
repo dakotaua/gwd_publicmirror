@@ -34,8 +34,10 @@
     
     if (self) {
         for (int i = 0; i < QUESTIONS_PER_ROUND; i++) {
-            QuizQuestion *qq = [[QuizQuestion alloc] init];
-            [self.questions addObject:qq];
+            QuizQuestion *question = [[QuizQuestion alloc] init];
+            question.questionNumber = i+1;
+            question.score = 0;
+            [self.questions addObject:question];
         }
     }
     return self;

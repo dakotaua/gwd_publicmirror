@@ -13,7 +13,6 @@
 
 @property (nonatomic) int roundNumber;
 @property (strong, nonatomic) NSMutableArray *questions;
-@property (nonatomic, getter=isJokered) BOOL jokered;
 
 -(int)roundScore;
 

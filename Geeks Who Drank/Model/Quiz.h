@@ -16,5 +16,6 @@
 @property (strong, nonatomic) NSMutableArray *quizRounds;
 
 -(int)quizScore;
+-(id)initWithName:(NSString*)teamName;
 
 @end

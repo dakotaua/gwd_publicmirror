@@ -8,7 +8,35 @@
 
 #import "QuizEvent.h"
 
+@interface QuizEvent()
+@property (readwrite, nonatomic) NSDate *quizDate;
+@end
+
+
 @implementation QuizEvent
+
+
+-(id)init {
+    
+    self = [super init];
+    if (self)
+        _quizDate = [NSDate date];
+    return self;
+}
+
+
+-(NSString *)quizMaster {
+    
+    if(!_quizMaster) _quizMaster = @"";
+    return _quizMaster;
+}
+
+//-(NSString *)location {
+//
+//    if(!_location) _location = @"";
+//    return _location;
+//}
+
 
 -(NSMutableArray *)quizzes {
 
@@ -22,10 +50,8 @@
     return _standings;
 }
 
--(NSString *)quizMaster {
+-(void)uploadEvent {
     
-    if(!_quizMaster) _quizMaster = @"";
-    return _quizMaster;
 }
 
 @end
