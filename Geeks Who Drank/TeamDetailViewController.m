@@ -69,14 +69,11 @@
     for (UIButton* b in self.roundButtons) {
         int roundIndex = b.tag;
         QuizRound* curRound = [self.theTeam.quizRounds objectAtIndex:roundIndex];
-        if (roundIndex != self.theTeam.jokerRound){
-            [b setTitle:[NSString stringWithFormat:@"Round %d - %d pts",roundIndex+1, [curRound roundScore]] forState:UIControlStateNormal];
-        }
-        else {
-            [b setTitle:[NSString stringWithFormat:@"Round %d - %d pts",roundIndex+1, [curRound roundScore]*2] forState:UIControlStateNormal];
+        int workingScore = (roundIndex!= self.theTeam.jokerRound ? [curRound roundScore] : [curRound roundScore]*2);
+        NSString *ptStr = (workingScore == 1 ? @"pt" : @"pts");
+        [b setTitle:[NSString stringWithFormat:@"Round %d - %d %@",roundIndex+1, workingScore, ptStr] forState:UIControlStateNormal];
+        if (roundIndex == self.theTeam.jokerRound)
             b.titleLabel.textColor = [UIColor redColor];
-        }
-
     }
     
 }

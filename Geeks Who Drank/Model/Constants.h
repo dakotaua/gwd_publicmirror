@@ -11,5 +11,8 @@
 
 #define ROUNDS_PER_QUIZ 8
 #define QUESTIONS_PER_ROUND 8
+#define FIRST_PLACE 1
+#define SECOND_PLACE 2
+#define THIRD_PLACE 3
 
 #endif

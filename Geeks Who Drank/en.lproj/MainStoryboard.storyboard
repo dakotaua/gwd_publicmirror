@@ -49,25 +49,32 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <prototypes>
-                            <tableViewCell contentMode="scaleToFill" selectionStyle="blue" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="teamCell" id="oMO-yP-7TH" customClass="EventTableTeamCell">
+                            <tableViewCell contentMode="scaleToFill" selectionStyle="blue" indentationWidth="10" reuseIdentifier="teamCell" id="oMO-yP-7TH" customClass="EventTableTeamCell">
                                 <rect key="frame" x="0.0" y="22" width="320" height="44"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
-                                    <rect key="frame" x="0.0" y="0.0" width="300" height="43"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="320" height="43"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Team Name" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="3YZ-sF-irq">
-                                            <rect key="frame" x="15" y="8" width="218" height="27"/>
+                                            <rect key="frame" x="30" y="8" width="199" height="27"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                             <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                             <color key="highlightedColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         </label>
                                         <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Score" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="JKS-GK-5K4">
-                                            <rect key="frame" x="220" y="11" width="45" height="21"/>
+                                            <rect key="frame" x="247" y="11" width="61" height="21"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                             <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                            <color key="highlightedColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        </label>
+                                        <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="yt0-ky-9K7">
+                                            <rect key="frame" x="5" y="11" width="22" height="21"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                            <color key="textColor" red="0.60000002384185791" green="0.60000002384185791" blue="0.60000002384185791" alpha="1" colorSpace="calibratedRGB"/>
                                             <color key="highlightedColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         </label>
                                     </subviews>
@@ -75,6 +82,7 @@
                                 </view>
                                 <connections>
                                     <outlet property="nameLabel" destination="3YZ-sF-irq" id="di1-he-4Bb"/>
+                                    <outlet property="standingLabel" destination="yt0-ky-9K7" id="Und-SY-mOD"/>
                                     <outlet property="teamScoreLabel" destination="JKS-GK-5K4" id="6Sf-QX-rct"/>
                                     <segue destination="6Zx-XA-xrD" kind="modal" identifier="eventToTeamSegue" id="RhM-Lk-gZ1"/>
                                 </connections>
@@ -177,7 +185,7 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="VyX-Aj-9fw">
-                                <rect key="frame" x="24" y="202" width="137" height="80"/>
+                                <rect key="frame" x="24" y="204" width="137" height="80"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
                                 <state key="normal" title="Round 1">
@@ -192,7 +200,7 @@
                                 </connections>
                             </button>
                             <button opaque="NO" tag="3" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="7vg-XZ-7C4">
-                                <rect key="frame" x="24" y="440" width="137" height="80"/>
+                                <rect key="frame" x="24" y="438" width="137" height="80"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
                                 <state key="normal" title="Round 4">
@@ -237,7 +245,7 @@
                                 </connections>
                             </button>
                             <button opaque="NO" tag="4" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="n0V-ux-1O3">
-                                <rect key="frame" x="160" y="202" width="137" height="80"/>
+                                <rect key="frame" x="160" y="204" width="137" height="80"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
                                 <state key="normal" title="Round 5">
@@ -252,7 +260,7 @@
                                 </connections>
                             </button>
                             <button opaque="NO" tag="7" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="L3l-9b-kOb">
-                                <rect key="frame" x="160" y="440" width="137" height="80"/>
+                                <rect key="frame" x="160" y="438" width="137" height="80"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
                                 <state key="normal" title="Round 8">
@@ -803,6 +811,67 @@
             <point key="canvasLocation" x="460" y="-227"/>
         </scene>
     </scenes>
+    <classes>
+        <class className="CreateTeamViewController" superclassName="UIViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/CreateTeamViewController.h"/>
+            <relationships>
+                <relationship kind="outlet" name="teamNameInput" candidateClass="UITextField"/>
+            </relationships>
+        </class>
+        <class className="EventTableNewTeamCell" superclassName="UITableViewCell">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/EventTableNewTeamCell.h"/>
+            <relationships>
+                <relationship kind="outlet" name="createTeamButton" candidateClass="UIButton"/>
+            </relationships>
+        </class>
+        <class className="EventTableTeamCell" superclassName="UITableViewCell">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/EventTableTeamCell.h"/>
+            <relationships>
+                <relationship kind="outlet" name="nameLabel" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="standingLabel" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="teamScoreLabel" candidateClass="UILabel"/>
+            </relationships>
+        </class>
+        <class className="EventTableViewController" superclassName="UITableViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/EventTableViewController.h"/>
+            <relationships>
+                <relationship kind="action" name="backToEventView:" candidateClass="UIStoryboardSegue"/>
+                <relationship kind="action" name="createTeam:" candidateClass="UIStoryboardSegue"/>
+            </relationships>
+        </class>
+        <class className="InitialViewController" superclassName="UIViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/InitialViewController.h"/>
+        </class>
+        <class className="RoundDetailViewController" superclassName="UIViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/RoundDetailViewController.h"/>
+            <relationships>
+                <relationship kind="action" name="jokerButtonPressed:" candidateClass="UIButton"/>
+                <relationship kind="action" name="scoreButtonPressed:" candidateClass="UIButton"/>
+                <relationship kind="action" name="swipe:" candidateClass="UISwipeGestureRecognizer"/>
+                <relationship kind="outlet" name="jokerButton" candidateClass="UIButton"/>
+                <relationship kind="outlet" name="roundLabel" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="roundScoreLabel" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="teamNameLabel" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="totalScoreLabel" candidateClass="UILabel"/>
+                <relationship kind="outletCollection" name="scoreLabels" candidateClass="UILabel"/>
+            </relationships>
+        </class>
+        <class className="TeamDetailViewController" superclassName="UIViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/TeamDetailViewController.h"/>
+            <relationships>
+                <relationship kind="action" name="backToTeamDetail:" candidateClass="UIStoryboardSegue"/>
+                <relationship kind="action" name="swipe:" candidateClass="UISwipeGestureRecognizer"/>
+                <relationship kind="action" name="viewRoundDetail:" candidateClass="UIButton"/>
+                <relationship kind="outlet" name="jokerImageView" candidateClass="UIImageView"/>
+                <relationship kind="outlet" name="teamNameLabel" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="teamScoreLabel" candidateClass="UILabel"/>
+                <relationship kind="outletCollection" name="roundButtons" candidateClass="UIButton"/>
+            </relationships>
+        </class>
+        <class className="UIStoryboardSegue" superclassName="NSObject">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/UIStoryboardSegue.h"/>
+        </class>
+    </classes>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">
         <simulatedStatusBarMetrics key="statusBar"/>
         <simulatedOrientationMetrics key="orientation"/>

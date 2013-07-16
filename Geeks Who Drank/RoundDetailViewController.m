@@ -31,29 +31,20 @@
     self.teamNameLabel.text = self.currentTeam.teamName;
     self.roundLabel.text = [NSString stringWithFormat:@"Round %d", self.roundIndex+1 ];
     
-    int workingScore = [self.currentRound roundScore];
-    if (self.currentTeam.jokerRound == self.roundIndex)
-        workingScore *= 2;
-    if (workingScore == 1)
-        self.roundScoreLabel.text = [NSString stringWithFormat:@"%d Point", workingScore];
-
-    else
-        self.roundScoreLabel.text = [NSString stringWithFormat:@"%d Points", workingScore];
+    int workingScore = (self.currentTeam.jokerRound != self.roundIndex ? [self.currentRound roundScore] : [self.currentRound roundScore]*2);
+    NSString *pointStr = (workingScore == 1 ? @"Point" : @"Points");
+    self.roundScoreLabel.text = [NSString stringWithFormat:@"%d %@", workingScore, pointStr];
     
     for (UILabel* l in self.scoreLabels) {
         QuizQuestion* q = [self.currentRound.questions objectAtIndex:l.tag];
-        if (q.score == 1)
-            l.text = [NSString stringWithFormat:@"%d) %d pt", q.questionNumber, q.score];
-        else
-            l.text = [NSString stringWithFormat:@"%d) %d pts", q.questionNumber, q.score];
+        NSString *ptStr = (q.score == 1 ? @"pt" : @"pts");
+        l.text = [NSString stringWithFormat:@"%d) %d %@", q.questionNumber, q.score, ptStr];
     }
     
     self.jokerButton.alpha = (self.currentTeam.jokerRound == self.roundIndex ? 1.0 : 0.4);
     
-    if ([self.currentTeam quizScore] != 1)
-        self.totalScoreLabel.text = [NSString stringWithFormat:@"%d points",[self.currentTeam quizScore]];
-    else
-        self.totalScoreLabel.text = [NSString stringWithFormat:@"%d point",[self.currentTeam quizScore]];
+    NSString *qScore = ([self.currentTeam quizScore] == 1 ? @"point" : @"points");
+    self.totalScoreLabel.text = [NSString stringWithFormat:@"%d %@",[self.currentTeam quizScore], qScore];
 }
 
 

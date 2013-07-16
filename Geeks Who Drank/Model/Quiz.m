@@ -11,6 +11,18 @@
 
 @implementation Quiz
 
+-(NSComparisonResult)reverseCompare:(Quiz *)otherQuiz{
+    NSNumber* myScore = [NSNumber numberWithInt:[self quizScore]];
+    NSNumber* otherScore = [NSNumber numberWithInt:[otherQuiz quizScore]];
+    return [otherScore compare:myScore];
+}
+
+-(NSComparisonResult)compare:(Quiz *)otherQuiz {
+    NSNumber* myScore = [NSNumber numberWithInt:[self quizScore]];
+    NSNumber* otherScore = [NSNumber numberWithInt:[otherQuiz quizScore]];
+    return [myScore compare:otherScore];
+}
+
 -(NSMutableArray *)quizRounds {
     
     if (!_quizRounds) _quizRounds = [[NSMutableArray alloc] init];

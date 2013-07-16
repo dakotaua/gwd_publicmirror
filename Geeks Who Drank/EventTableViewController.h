@@ -13,12 +13,14 @@
 #import "EventTableNewTeamCell.h"
 #import "Quiz.h"
 #import "TeamDetailViewController.h"
+#import "Constants.h"
 
 
 @interface EventTableViewController : UITableViewController
 
 //@property (nonatomic) int teamIndex;
-@property (strong, nonatomic) NSMutableArray *quizEventCollection;
+@property (strong, nonatomic) NSMutableArray *quizCollection;
+@property (nonatomic) BOOL sortingByScore;
 
 - (IBAction)createTeam:(UIStoryboardSegue*)segue;
 - (IBAction)backToEventView:(UIStoryboardSegue*)segue;

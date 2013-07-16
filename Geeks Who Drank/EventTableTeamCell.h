@@ -12,5 +12,6 @@
 
 @property (weak, nonatomic) IBOutlet UILabel *nameLabel;
 @property (weak, nonatomic) IBOutlet UILabel *teamScoreLabel;
+@property (weak, nonatomic) IBOutlet UILabel *standingLabel;
 
 @end

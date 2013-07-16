@@ -17,5 +17,8 @@
 
 -(int)quizScore;
 -(id)initWithName:(NSString*)teamName;
+-(NSComparisonResult)compare:(Quiz *)otherQuiz;
+-(NSComparisonResult)reverseCompare:(Quiz *)otherQuiz;
+
 
 @end
