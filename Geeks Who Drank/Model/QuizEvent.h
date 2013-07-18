@@ -8,6 +8,7 @@
 // QuizEvent models the concept of a night of quizzing, to be maintained by the QuizMaster
 //
 #import <Foundation/Foundation.h>
+#import "Quiz.h"
 
 @interface QuizEvent : NSObject
 
@@ -16,6 +17,7 @@
 @property (readonly, nonatomic) NSDate *quizDate;
 @property (strong, nonatomic) NSMutableArray *quizzes;
 @property (strong, nonatomic) NSOrderedSet *standings;
+@property (readonly, strong, nonatomic) NSDictionary *jsonDict;
 
 -(void)uploadEvent;
 

@@ -9,7 +9,29 @@
 #import "QuizRound.h"
 #import "Constants.h"
 
+@interface QuizRound()
+
+@property (readwrite, strong, nonatomic) NSDictionary *jsonDict;
+
+@end
+
 @implementation QuizRound
+
+-(NSDictionary *)jsonDict {
+    _jsonDict = @{
+        @"round_number": [NSNumber numberWithInt:self.roundNumber],
+           @"questions": [[NSMutableArray alloc] init]
+    };
+    
+    for (id q in self.questions) {
+        if ([q isMemberOfClass:[QuizQuestion class]]) {
+            QuizQuestion *question = (QuizQuestion *) q;
+            [_jsonDict[@"questions"] addObject:question.jsonDict];
+        }
+    }
+
+    return _jsonDict;
+}
 
 -(NSMutableArray *)questions {
     

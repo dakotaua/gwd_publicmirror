@@ -9,12 +9,40 @@
 #import "QuizEvent.h"
 
 @interface QuizEvent()
+
 @property (readwrite, nonatomic) NSDate *quizDate;
+@property (readwrite, strong, nonatomic) NSDictionary *jsonDict;
+
 @end
 
 
 @implementation QuizEvent
 
+-(NSDictionary *)jsonDict {
+    _jsonDict = @{
+             @"event_id": [NSNumber numberWithInt:1],
+             @"venue_id": [NSNumber numberWithInt:1],
+        @"quizmaster_id": [NSNumber numberWithInt:1],
+            @"quiz_date": self.quizDate.description,
+              @"quizzes": [[NSMutableArray alloc] init]
+    };
+    
+    // TODO: Get Event ID
+    
+    // TODO: Get Venue ID
+    
+    // TODO: Get QuizMaster ID
+    
+    for (id q in self.quizzes) {
+        if ([q isMemberOfClass:[Quiz class]]) {
+            Quiz *quiz = (Quiz *) q;
+            
+            [_jsonDict[@"quizzes"] addObject:quiz.jsonDict];
+        }
+    }
+    
+    return _jsonDict;
+}
 
 -(id)init {
     

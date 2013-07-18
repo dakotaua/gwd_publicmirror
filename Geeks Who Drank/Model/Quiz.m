@@ -9,7 +9,31 @@
 #import "Quiz.h"
 #import "Constants.h"
 
+@interface Quiz()
+
+@property (readwrite, strong, nonatomic) NSDictionary *jsonDict;
+
+@end
+
 @implementation Quiz
+
+-(NSDictionary *)jsonDict {
+    _jsonDict = @{
+          @"team_name": self.teamName,
+        @"joker_round": [NSNumber numberWithInt:self.jokerRound],
+             @"rounds": [[NSMutableArray alloc] init]
+    };
+    
+    for (id r in self.quizRounds) {
+        if ([r isMemberOfClass:[QuizRound class]]) {
+            QuizRound *quizRound = (QuizRound *) r;
+            
+            [_jsonDict[@"rounds"] addObject:quizRound.jsonDict];
+        }
+    }
+    
+    return _jsonDict;
+}
 
 -(NSComparisonResult)reverseCompare:(Quiz *)otherQuiz{
     NSNumber* myScore = [NSNumber numberWithInt:[self quizScore]];

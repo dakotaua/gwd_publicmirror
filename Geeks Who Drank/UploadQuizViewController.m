@@ -83,8 +83,28 @@
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
+    NSError *error;
+    QuizEvent *event = [self.quizEvents objectAtIndex:indexPath.row];
+    NSData *jsonData = [
+        NSJSONSerialization dataWithJSONObject:event.jsonDict
+                                       options:nil
+                                         error:&error
+    ];
     
-    // CODE FOR QUIZ UPLOAD GOES HERE
+    if (!jsonData) {
+        NSLog(@"Got an error: %@", error);
+    }
+    
+    else {
+        NSString *jsonString = [[
+            NSString alloc] initWithData:jsonData
+                                encoding:NSUTF8StringEncoding
+        ];
+        
+        NSLog(@"%@", jsonString);
+    }
+    
+    // TODO: upload quiz to site API
 }
 
 @end

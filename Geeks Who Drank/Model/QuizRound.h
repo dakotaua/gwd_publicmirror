@@ -13,6 +13,7 @@
 
 @property (nonatomic) int roundNumber;
 @property (strong, nonatomic) NSMutableArray *questions;
+@property (readonly, strong, nonatomic) NSDictionary *jsonDict;
 
 -(int)roundScore;
 
