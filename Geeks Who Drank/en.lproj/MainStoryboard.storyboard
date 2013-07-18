@@ -15,7 +15,7 @@
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="2q1-MF-gQJ">
                                 <rect key="frame" x="65" y="228" width="191" height="44"/>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
-                                <state key="normal" title="Score a Quiz">
+                                <state key="normal" title="Host a Quiz">
                                     <color key="titleColor" red="0.19607843459999999" green="0.30980393290000002" blue="0.52156865600000002" alpha="1" colorSpace="calibratedRGB"/>
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
@@ -23,7 +23,7 @@
                                     <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
-                                    <segue destination="IG7-lD-3F2" kind="modal" id="CKH-t1-2BN"/>
+                                    <action selector="hostAQuizPressed:" destination="2" eventType="touchUpInside" id="Jao-JM-Sch"/>
                                 </connections>
                             </button>
                             <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Geeks Who Drank Initial View" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="E1n-8a-pJw">
@@ -32,101 +32,220 @@
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="g1I-EW-8RY">
+                                <rect key="frame" x="65" y="279" width="191" height="44"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
+                                <state key="normal" title="Upload a Quiz">
+                                    <color key="titleColor" red="0.19607843459999999" green="0.30980393290000002" blue="0.52156865600000002" alpha="1" colorSpace="calibratedRGB"/>
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <state key="highlighted">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="uploadAQuizPressed:" destination="2" eventType="touchUpInside" id="QNa-go-x8A"/>
+                                    <segue destination="3P2-ws-jPg" kind="modal" identifier="uploadQuizSegue" id="3o6-f5-fmk"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                     </view>
+                    <connections>
+                        <outlet property="uploadButton" destination="g1I-EW-8RY" id="Cbx-k7-JaG"/>
+                        <segue destination="Xre-WA-XEP" kind="modal" identifier="hostAQuizSegue" id="EaS-J8-qVD"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="4" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-541" y="169"/>
+            <point key="canvasLocation" x="-783" y="-488"/>
         </scene>
-        <!--Event Table View Controller-->
-        <scene sceneID="ixz-0z-bux">
+        <!--Upload Quiz View Controller-->
+        <scene sceneID="wWn-pa-0E6">
             <objects>
-                <tableViewController id="IG7-lD-3F2" customClass="EventTableViewController" sceneMemberID="viewController">
-                    <tableView key="view" opaque="NO" clipsSubviews="YES" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="cKt-dI-OSo">
+                <viewController id="3P2-ws-jPg" customClass="UploadQuizViewController" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="4ns-Gx-kCv">
                         <rect key="frame" x="0.0" y="20" width="320" height="548"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                        <prototypes>
-                            <tableViewCell contentMode="scaleToFill" selectionStyle="blue" indentationWidth="10" reuseIdentifier="teamCell" id="oMO-yP-7TH" customClass="EventTableTeamCell">
-                                <rect key="frame" x="0.0" y="22" width="320" height="44"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="pXU-C6-jaK">
+                                <rect key="frame" x="0.0" y="77" width="320" height="471"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <prototypes>
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="blue" indentationWidth="10" reuseIdentifier="uploadQuizCell" id="aba-1z-S3R" customClass="UploadQuizCell">
+                                        <rect key="frame" x="0.0" y="22" width="320" height="44"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
+                                            <rect key="frame" x="0.0" y="0.0" width="320" height="43"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="quizLocationLabel" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="bTG-bK-kQT">
+                                                    <rect key="frame" x="11" y="11" width="164" height="21"/>
+                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                    <color key="highlightedColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                </label>
+                                                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="quizDateLabel" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="OCh-o8-ZSF">
+                                                    <rect key="frame" x="204" y="11" width="109" height="21"/>
+                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="13"/>
+                                                    <color key="textColor" red="0.40000000596046448" green="0.40000000596046448" blue="0.40000000596046448" alpha="1" colorSpace="calibratedRGB"/>
+                                                    <color key="highlightedColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                </label>
+                                            </subviews>
+                                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                        </view>
+                                        <connections>
+                                            <outlet property="dateLabel" destination="OCh-o8-ZSF" id="pGk-4o-mHz"/>
+                                            <outlet property="locationLabel" destination="bTG-bK-kQT" id="PEJ-Re-X9N"/>
+                                        </connections>
+                                    </tableViewCell>
+                                </prototypes>
+                            </tableView>
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Upload Quiz Scene" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="v1r-4U-k4E">
+                                <rect key="frame" x="20" y="28" width="280" height="21"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
-                                    <rect key="frame" x="0.0" y="0.0" width="320" height="43"/>
-                                    <autoresizingMask key="autoresizingMask"/>
-                                    <subviews>
-                                        <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Team Name" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="3YZ-sF-irq">
-                                            <rect key="frame" x="30" y="8" width="199" height="27"/>
-                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                            <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
-                                            <color key="highlightedColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                        </label>
-                                        <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Score" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="JKS-GK-5K4">
-                                            <rect key="frame" x="247" y="11" width="61" height="21"/>
-                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                            <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
-                                            <color key="highlightedColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                        </label>
-                                        <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="yt0-ky-9K7">
-                                            <rect key="frame" x="5" y="11" width="22" height="21"/>
-                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                            <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                            <color key="textColor" red="0.60000002384185791" green="0.60000002384185791" blue="0.60000002384185791" alpha="1" colorSpace="calibratedRGB"/>
-                                            <color key="highlightedColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                        </label>
-                                    </subviews>
-                                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
-                                </view>
-                                <connections>
-                                    <outlet property="nameLabel" destination="3YZ-sF-irq" id="di1-he-4Bb"/>
-                                    <outlet property="standingLabel" destination="yt0-ky-9K7" id="Und-SY-mOD"/>
-                                    <outlet property="teamScoreLabel" destination="JKS-GK-5K4" id="6Sf-QX-rct"/>
-                                    <segue destination="6Zx-XA-xrD" kind="modal" identifier="eventToTeamSegue" id="RhM-Lk-gZ1"/>
-                                </connections>
-                            </tableViewCell>
-                            <tableViewCell opaque="NO" contentMode="scaleToFill" selectionStyle="blue" indentationWidth="10" reuseIdentifier="createTeamCell" id="MbO-wg-wFe" customClass="EventTableNewTeamCell">
-                                <rect key="frame" x="0.0" y="66" width="320" height="44"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="iP9-9t-x4a">
+                                <rect key="frame" x="5" y="6" width="61" height="32"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
-                                    <rect key="frame" x="0.0" y="0.0" width="320" height="43"/>
-                                    <autoresizingMask key="autoresizingMask"/>
-                                    <subviews>
-                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="Xh3-Pb-7qh">
-                                            <rect key="frame" x="10" y="0.0" width="271" height="44"/>
-                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                            <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
-                                            <state key="normal" title="   Create New Team...">
-                                                <color key="titleColor" red="0.19607843459999999" green="0.30980393290000002" blue="0.52156865600000002" alpha="1" colorSpace="calibratedRGB"/>
-                                                <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                            </state>
-                                            <state key="highlighted">
-                                                <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                            </state>
-                                            <connections>
-                                                <segue destination="QIh-Ux-fXm" kind="modal" id="zOR-Bd-2mH"/>
-                                            </connections>
-                                        </button>
-                                    </subviews>
-                                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
-                                </view>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
+                                <state key="normal" title="back">
+                                    <color key="titleColor" red="0.19607843459999999" green="0.30980393290000002" blue="0.52156865600000002" alpha="1" colorSpace="calibratedRGB"/>
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <state key="highlighted">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
                                 <connections>
-                                    <outlet property="createTeamButton" destination="Xh3-Pb-7qh" id="h6S-d1-whF"/>
+                                    <segue destination="Das-0y-bwX" kind="unwind" unwindAction="backToInitialView:" id="eHc-sS-tCD"/>
                                 </connections>
-                            </tableViewCell>
-                        </prototypes>
-                        <connections>
-                            <outlet property="dataSource" destination="IG7-lD-3F2" id="j8w-1A-H1D"/>
-                            <outlet property="delegate" destination="IG7-lD-3F2" id="Aoh-GA-X5l"/>
-                        </connections>
-                    </tableView>
-                    <navigationItem key="navigationItem" id="Vho-9r-QYk"/>
-                </tableViewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="ge0-Ef-w8i" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                    </view>
+                    <connections>
+                        <outlet property="tableView" destination="pXU-C6-jaK" id="62J-Xi-Lub"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="uqd-V5-vM7" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <exit id="Das-0y-bwX" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
-            <point key="canvasLocation" x="2" y="158"/>
+            <point key="canvasLocation" x="-188" y="-673"/>
+        </scene>
+        <!--Quiz Table View Controller-->
+        <scene sceneID="ygQ-ui-4cC">
+            <objects>
+                <viewController id="Xre-WA-XEP" customClass="QuizTableViewController" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="pJr-5y-CoA">
+                        <rect key="frame" x="0.0" y="20" width="320" height="548"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="dRl-ky-c5y">
+                                <rect key="frame" x="0.0" y="88" width="320" height="460"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <prototypes>
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="blue" indentationWidth="10" reuseIdentifier="teamCell" id="bk0-oC-4C6" customClass="EventTableTeamCell">
+                                        <rect key="frame" x="0.0" y="22" width="320" height="44"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
+                                            <rect key="frame" x="0.0" y="0.0" width="320" height="43"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Team Name" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="HHv-xZ-Fwc">
+                                                    <rect key="frame" x="30" y="8" width="199" height="27"/>
+                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                    <color key="highlightedColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                </label>
+                                                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Score" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="qew-Bh-bdN">
+                                                    <rect key="frame" x="247" y="11" width="61" height="21"/>
+                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                    <color key="highlightedColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                </label>
+                                                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="2Tg-62-DlB">
+                                                    <rect key="frame" x="5" y="11" width="22" height="21"/>
+                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                    <color key="textColor" red="0.60000002379999995" green="0.60000002379999995" blue="0.60000002379999995" alpha="1" colorSpace="calibratedRGB"/>
+                                                    <color key="highlightedColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                </label>
+                                            </subviews>
+                                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                        </view>
+                                        <connections>
+                                            <outlet property="nameLabel" destination="HHv-xZ-Fwc" id="mjy-hF-rPv"/>
+                                            <outlet property="standingLabel" destination="2Tg-62-DlB" id="HGC-KM-4xA"/>
+                                            <outlet property="teamScoreLabel" destination="qew-Bh-bdN" id="BSp-n1-sly"/>
+                                            <segue destination="6Zx-XA-xrD" kind="modal" identifier="quizTableToTeamDetailSegue" id="CbI-O7-fSI"/>
+                                        </connections>
+                                    </tableViewCell>
+                                    <tableViewCell opaque="NO" contentMode="scaleToFill" selectionStyle="blue" indentationWidth="10" reuseIdentifier="createTeamCell" id="9Lz-A8-WIk" customClass="EventTableNewTeamCell">
+                                        <rect key="frame" x="0.0" y="66" width="320" height="44"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
+                                            <rect key="frame" x="0.0" y="0.0" width="320" height="43"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="MIn-DK-rjd">
+                                                    <rect key="frame" x="10" y="0.0" width="271" height="44"/>
+                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                    <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
+                                                    <state key="normal" title="   Create New Team...">
+                                                        <color key="titleColor" red="0.19607843459999999" green="0.30980393290000002" blue="0.52156865600000002" alpha="1" colorSpace="calibratedRGB"/>
+                                                        <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                                    </state>
+                                                    <state key="highlighted">
+                                                        <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                    </state>
+                                                    <connections>
+                                                        <segue destination="QIh-Ux-fXm" kind="modal" id="geX-Iw-Vpp"/>
+                                                    </connections>
+                                                </button>
+                                            </subviews>
+                                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                        </view>
+                                        <connections>
+                                            <outlet property="createTeamButton" destination="MIn-DK-rjd" id="MO7-fp-YA4"/>
+                                        </connections>
+                                    </tableViewCell>
+                                </prototypes>
+                            </tableView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="oeF-72-Vea">
+                                <rect key="frame" x="9" y="9" width="59" height="32"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
+                                <state key="normal" title="back">
+                                    <color key="titleColor" red="0.19607843459999999" green="0.30980393290000002" blue="0.52156865600000002" alpha="1" colorSpace="calibratedRGB"/>
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <state key="highlighted">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <segue destination="uWU-o3-YJj" kind="unwind" unwindAction="backToInitialView:" id="yUs-Ek-80k"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                    </view>
+                    <connections>
+                        <outlet property="tableView" destination="dRl-ky-c5y" id="yGP-ll-4wB"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Zdr-yX-ihB" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <exit id="uWU-o3-YJj" userLabel="Exit" sceneMemberID="exit"/>
+            </objects>
+            <point key="canvasLocation" x="-77" y="24"/>
         </scene>
         <!--Team Detail View Controller-->
         <scene sceneID="rFF-Ti-Q9f">
@@ -325,7 +444,7 @@
                     </connections>
                 </swipeGestureRecognizer>
             </objects>
-            <point key="canvasLocation" x="440" y="451"/>
+            <point key="canvasLocation" x="433" y="314"/>
         </scene>
         <!--Round Detail View Controller-->
         <scene sceneID="nli-Bd-fTW">
@@ -808,70 +927,9 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="YbC-Zz-rRh" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <exit id="9sz-ez-Nby" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
-            <point key="canvasLocation" x="460" y="-227"/>
+            <point key="canvasLocation" x="433" y="-330"/>
         </scene>
     </scenes>
-    <classes>
-        <class className="CreateTeamViewController" superclassName="UIViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/CreateTeamViewController.h"/>
-            <relationships>
-                <relationship kind="outlet" name="teamNameInput" candidateClass="UITextField"/>
-            </relationships>
-        </class>
-        <class className="EventTableNewTeamCell" superclassName="UITableViewCell">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/EventTableNewTeamCell.h"/>
-            <relationships>
-                <relationship kind="outlet" name="createTeamButton" candidateClass="UIButton"/>
-            </relationships>
-        </class>
-        <class className="EventTableTeamCell" superclassName="UITableViewCell">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/EventTableTeamCell.h"/>
-            <relationships>
-                <relationship kind="outlet" name="nameLabel" candidateClass="UILabel"/>
-                <relationship kind="outlet" name="standingLabel" candidateClass="UILabel"/>
-                <relationship kind="outlet" name="teamScoreLabel" candidateClass="UILabel"/>
-            </relationships>
-        </class>
-        <class className="EventTableViewController" superclassName="UITableViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/EventTableViewController.h"/>
-            <relationships>
-                <relationship kind="action" name="backToEventView:" candidateClass="UIStoryboardSegue"/>
-                <relationship kind="action" name="createTeam:" candidateClass="UIStoryboardSegue"/>
-            </relationships>
-        </class>
-        <class className="InitialViewController" superclassName="UIViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/InitialViewController.h"/>
-        </class>
-        <class className="RoundDetailViewController" superclassName="UIViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/RoundDetailViewController.h"/>
-            <relationships>
-                <relationship kind="action" name="jokerButtonPressed:" candidateClass="UIButton"/>
-                <relationship kind="action" name="scoreButtonPressed:" candidateClass="UIButton"/>
-                <relationship kind="action" name="swipe:" candidateClass="UISwipeGestureRecognizer"/>
-                <relationship kind="outlet" name="jokerButton" candidateClass="UIButton"/>
-                <relationship kind="outlet" name="roundLabel" candidateClass="UILabel"/>
-                <relationship kind="outlet" name="roundScoreLabel" candidateClass="UILabel"/>
-                <relationship kind="outlet" name="teamNameLabel" candidateClass="UILabel"/>
-                <relationship kind="outlet" name="totalScoreLabel" candidateClass="UILabel"/>
-                <relationship kind="outletCollection" name="scoreLabels" candidateClass="UILabel"/>
-            </relationships>
-        </class>
-        <class className="TeamDetailViewController" superclassName="UIViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/TeamDetailViewController.h"/>
-            <relationships>
-                <relationship kind="action" name="backToTeamDetail:" candidateClass="UIStoryboardSegue"/>
-                <relationship kind="action" name="swipe:" candidateClass="UISwipeGestureRecognizer"/>
-                <relationship kind="action" name="viewRoundDetail:" candidateClass="UIButton"/>
-                <relationship kind="outlet" name="jokerImageView" candidateClass="UIImageView"/>
-                <relationship kind="outlet" name="teamNameLabel" candidateClass="UILabel"/>
-                <relationship kind="outlet" name="teamScoreLabel" candidateClass="UILabel"/>
-                <relationship kind="outletCollection" name="roundButtons" candidateClass="UIButton"/>
-            </relationships>
-        </class>
-        <class className="UIStoryboardSegue" superclassName="NSObject">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/UIStoryboardSegue.h"/>
-        </class>
-    </classes>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">
         <simulatedStatusBarMetrics key="statusBar"/>
         <simulatedOrientationMetrics key="orientation"/>

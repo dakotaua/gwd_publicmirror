@@ -26,13 +26,15 @@
 		1D4B3EC117836E4500C9F649 /* QuizQuestion.m in Sources */ = {isa = PBXBuildFile; fileRef = 1D4B3EC017836E4500C9F649 /* QuizQuestion.m */; };
 		1D4B3EC417836E9000C9F649 /* QuizRound.m in Sources */ = {isa = PBXBuildFile; fileRef = 1D4B3EC317836E9000C9F649 /* QuizRound.m */; };
 		1D4B3EC71783714A00C9F649 /* QuizEvent.m in Sources */ = {isa = PBXBuildFile; fileRef = 1D4B3EC61783714A00C9F649 /* QuizEvent.m */; };
-		1D5DCC59178F3DC00084C02B /* EventTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1D5DCC58178F3DBF0084C02B /* EventTableViewController.m */; };
+		1D4FE9731796FD1F00302115 /* QuizTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1D4FE9721796FD1F00302115 /* QuizTableViewController.m */; };
 		1D5DCC5C178F3E430084C02B /* EventTableTeamCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 1D5DCC5B178F3E430084C02B /* EventTableTeamCell.m */; };
 		1D5DCC5F178F3E6C0084C02B /* EventTableNewTeamCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 1D5DCC5E178F3E6C0084C02B /* EventTableNewTeamCell.m */; };
 		1D5DCC65179064720084C02B /* CreateTeamViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1D5DCC64179064720084C02B /* CreateTeamViewController.m */; };
 		1D5DCC6817907BEF0084C02B /* TeamDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1D5DCC6717907BEF0084C02B /* TeamDetailViewController.m */; };
 		1D5DCC6B17909CD60084C02B /* RoundDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1D5DCC6A17909CD60084C02B /* RoundDetailViewController.m */; };
 		1D7137E31785F3F9003C0AA3 /* InitialViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1D7137E21785F3F9003C0AA3 /* InitialViewController.m */; };
+		1D9B30411798512D00F6BA8B /* UploadQuizViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1D9B30401798512D00F6BA8B /* UploadQuizViewController.m */; };
+		1D9B3044179851F600F6BA8B /* UploadQuizCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 1D9B3043179851F600F6BA8B /* UploadQuizCell.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -75,8 +77,8 @@
 		1D4B3EC51783714A00C9F649 /* QuizEvent.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = QuizEvent.h; path = Model/QuizEvent.h; sourceTree = "<group>"; tabWidth = 2; };
 		1D4B3EC61783714A00C9F649 /* QuizEvent.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = QuizEvent.m; path = Model/QuizEvent.m; sourceTree = "<group>"; };
 		1D4B3EC91783F74900C9F649 /* Constants.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = Constants.h; path = Model/Constants.h; sourceTree = "<group>"; };
-		1D5DCC57178F3DBF0084C02B /* EventTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EventTableViewController.h; sourceTree = "<group>"; };
-		1D5DCC58178F3DBF0084C02B /* EventTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EventTableViewController.m; sourceTree = "<group>"; };
+		1D4FE9711796FD1F00302115 /* QuizTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QuizTableViewController.h; sourceTree = "<group>"; };
+		1D4FE9721796FD1F00302115 /* QuizTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QuizTableViewController.m; sourceTree = "<group>"; };
 		1D5DCC5A178F3E430084C02B /* EventTableTeamCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EventTableTeamCell.h; sourceTree = "<group>"; };
 		1D5DCC5B178F3E430084C02B /* EventTableTeamCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EventTableTeamCell.m; sourceTree = "<group>"; };
 		1D5DCC5D178F3E6B0084C02B /* EventTableNewTeamCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EventTableNewTeamCell.h; sourceTree = "<group>"; };
@@ -89,6 +91,10 @@
 		1D5DCC6A17909CD60084C02B /* RoundDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RoundDetailViewController.m; sourceTree = "<group>"; };
 		1D7137E11785F3F9003C0AA3 /* InitialViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = InitialViewController.h; sourceTree = "<group>"; };
 		1D7137E21785F3F9003C0AA3 /* InitialViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = InitialViewController.m; sourceTree = "<group>"; };
+		1D9B303F1798512D00F6BA8B /* UploadQuizViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UploadQuizViewController.h; sourceTree = "<group>"; };
+		1D9B30401798512D00F6BA8B /* UploadQuizViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UploadQuizViewController.m; sourceTree = "<group>"; };
+		1D9B3042179851F600F6BA8B /* UploadQuizCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UploadQuizCell.h; sourceTree = "<group>"; };
+		1D9B3043179851F600F6BA8B /* UploadQuizCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UploadQuizCell.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -155,10 +161,14 @@
 				1D5DCC5B178F3E430084C02B /* EventTableTeamCell.m */,
 				1D5DCC5D178F3E6B0084C02B /* EventTableNewTeamCell.h */,
 				1D5DCC5E178F3E6C0084C02B /* EventTableNewTeamCell.m */,
+				1D9B3042179851F600F6BA8B /* UploadQuizCell.h */,
+				1D9B3043179851F600F6BA8B /* UploadQuizCell.m */,
 				1D7137E11785F3F9003C0AA3 /* InitialViewController.h */,
 				1D7137E21785F3F9003C0AA3 /* InitialViewController.m */,
-				1D5DCC57178F3DBF0084C02B /* EventTableViewController.h */,
-				1D5DCC58178F3DBF0084C02B /* EventTableViewController.m */,
+				1D9B303F1798512D00F6BA8B /* UploadQuizViewController.h */,
+				1D9B30401798512D00F6BA8B /* UploadQuizViewController.m */,
+				1D4FE9711796FD1F00302115 /* QuizTableViewController.h */,
+				1D4FE9721796FD1F00302115 /* QuizTableViewController.m */,
 				1D5DCC63179064710084C02B /* CreateTeamViewController.h */,
 				1D5DCC64179064720084C02B /* CreateTeamViewController.m */,
 				1D5DCC6617907BEF0084C02B /* TeamDetailViewController.h */,
@@ -338,12 +348,14 @@
 				1D4B3EC417836E9000C9F649 /* QuizRound.m in Sources */,
 				1D4B3EC71783714A00C9F649 /* QuizEvent.m in Sources */,
 				1D7137E31785F3F9003C0AA3 /* InitialViewController.m in Sources */,
-				1D5DCC59178F3DC00084C02B /* EventTableViewController.m in Sources */,
 				1D5DCC5C178F3E430084C02B /* EventTableTeamCell.m in Sources */,
 				1D5DCC5F178F3E6C0084C02B /* EventTableNewTeamCell.m in Sources */,
 				1D5DCC65179064720084C02B /* CreateTeamViewController.m in Sources */,
 				1D5DCC6817907BEF0084C02B /* TeamDetailViewController.m in Sources */,
 				1D5DCC6B17909CD60084C02B /* RoundDetailViewController.m in Sources */,
+				1D4FE9731796FD1F00302115 /* QuizTableViewController.m in Sources */,
+				1D9B30411798512D00F6BA8B /* UploadQuizViewController.m in Sources */,
+				1D9B3044179851F600F6BA8B /* UploadQuizCell.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

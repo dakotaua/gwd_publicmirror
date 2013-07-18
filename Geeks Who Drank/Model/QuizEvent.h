@@ -12,7 +12,7 @@
 @interface QuizEvent : NSObject
 
 @property (strong, nonatomic) NSString *quizMaster;
-//@property (strong, nonatomic) NSString *location;
+@property (strong, nonatomic) NSString *location;
 @property (readonly, nonatomic) NSDate *quizDate;
 @property (strong, nonatomic) NSMutableArray *quizzes;
 @property (strong, nonatomic) NSOrderedSet *standings;

@@ -8,17 +8,31 @@
 
 #import "CreateTeamViewController.h"
 
-@interface CreateTeamViewController ()
+@interface CreateTeamViewController () <UITextFieldDelegate>
 
 @end
 
 @implementation CreateTeamViewController
 
+- (BOOL)textFieldShouldReturn:(UITextField *)textField {
+    if (textField == self.teamNameInput) {
+        [textField resignFirstResponder];
+        return NO;
+    }
+    return YES;
+}
+
+- (void) setup {
+    
+    self.teamNameInput.delegate = self;
+    
+}
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) {
         // Custom initialization
+        [self setup];
     }
     return self;
 }
@@ -26,6 +40,7 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    [self setup];
 	// Do any additional setup after loading the view.
 }
 
