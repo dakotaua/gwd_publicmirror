@@ -87,7 +87,7 @@
     QuizEvent *event = [self.quizEvents objectAtIndex:indexPath.row];
     NSData *jsonData = [
         NSJSONSerialization dataWithJSONObject:event.jsonDict
-                                       options:nil
+                                       options:0
                                          error:&error
     ];
     

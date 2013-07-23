@@ -66,6 +66,7 @@
     newNight.location = @"Temp Location string";
     [self.quizEventCollection addObject:newNight];
     self.currentQuizNight = newNight;
+    
     [self performSegueWithIdentifier:@"hostAQuizSegue" sender:sender];
     
 }

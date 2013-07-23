@@ -66,27 +66,37 @@
     
     int numTeams = self.theQuizzes.count;
     
-    if (sender.direction == UISwipeGestureRecognizerDirectionLeft) {
+    if (numTeams > 1){
         
-        self.teamIndex = (self.teamIndex + 1) % numTeams;
-        self.currentTeam = [self.theQuizzes objectAtIndex:self.teamIndex];
-        [self refreshUI];
+        if (sender.direction == UISwipeGestureRecognizerDirectionLeft)
+            
+            [UIView transitionWithView:self.view duration:0.5 options:UIViewAnimationOptionTransitionFlipFromRight animations:
+             ^{
+                 self.teamIndex = (self.teamIndex + 1) % numTeams;
+                 self.currentTeam = [self.theQuizzes objectAtIndex:self.teamIndex];
+             } completion:NULL];
+        
+        if (sender.direction == UISwipeGestureRecognizerDirectionRight)
+            
+            [UIView transitionWithView:self.view duration:0.5 options:UIViewAnimationOptionTransitionFlipFromLeft animations:
+             ^{
+                 self.teamIndex = (self.teamIndex + (numTeams-1)) % numTeams;
+                 self.currentTeam = [self.theQuizzes objectAtIndex:self.teamIndex];             } completion:NULL];
+        
         
     }
     
-    if (sender.direction == UISwipeGestureRecognizerDirectionRight) {
-        
-        self.teamIndex = (self.teamIndex + (numTeams-1)) % numTeams;
-        self.currentTeam = [self.theQuizzes objectAtIndex:self.teamIndex];
-        [self refreshUI];
-        
-    }
-
     if (sender.direction == UISwipeGestureRecognizerDirectionUp)
-        self.roundIndex = (self.roundIndex + 1) % 8;
+        [UIView transitionWithView:self.view duration:.5 options:UIViewAnimationOptionTransitionCurlUp animations:
+         ^{
+             self.roundIndex = (self.roundIndex + 1) % 8;
+         } completion:NULL];
     
     if (sender.direction == UISwipeGestureRecognizerDirectionDown)
-        self.roundIndex = (self.roundIndex + 7) % 8;
+        [UIView transitionWithView:self.view duration:.5 options:UIViewAnimationOptionTransitionCurlDown animations:
+         ^{
+             self.roundIndex = (self.roundIndex + 7) % 8;
+         } completion:NULL];
     
     [self refreshUI];
 

@@ -18,21 +18,28 @@
 - (IBAction)swipe:(UISwipeGestureRecognizer *)sender {
     
     int numTeams = self.theQuizzes.count;
-    
-    if (sender.direction == UISwipeGestureRecognizerDirectionLeft) {
+    if (numTeams > 1) {
+        if (sender.direction == UISwipeGestureRecognizerDirectionLeft) {
+            
+            
+            [UIView transitionWithView:self.view duration:.5 options:UIViewAnimationOptionTransitionFlipFromRight animations:
+             ^{
+                 self.teamIndex = (self.teamIndex + 1) % numTeams;
+                 self.theTeam = [self.theQuizzes objectAtIndex:self.teamIndex];
+             } completion:NULL];
+            [self refreshUI];
+        }
         
-        self.teamIndex = (self.teamIndex + 1) % numTeams;
-        self.theTeam = [self.theQuizzes objectAtIndex:self.teamIndex];
-        [self refreshUI];
-        
-    }
-    
-    if (sender.direction == UISwipeGestureRecognizerDirectionRight) {
-        
-        self.teamIndex = (self.teamIndex + (numTeams-1)) % numTeams;
-        self.theTeam = [self.theQuizzes objectAtIndex:self.teamIndex];
-        [self refreshUI];
-        
+        if (sender.direction == UISwipeGestureRecognizerDirectionRight) {
+            
+            [UIView transitionWithView:self.view duration:.5 options:UIViewAnimationOptionTransitionFlipFromLeft animations:
+             ^{
+                 self.teamIndex = (self.teamIndex + (numTeams-1)) % numTeams;
+                 self.theTeam = [self.theQuizzes objectAtIndex:self.teamIndex];
+             } completion:NULL];
+            [self refreshUI];
+            
+        }
     }
 }
 

@@ -221,7 +221,7 @@
                                 </prototypes>
                             </tableView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="oeF-72-Vea">
-                                <rect key="frame" x="9" y="9" width="59" height="32"/>
+                                <rect key="frame" x="5" y="5" width="53" height="31"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
                                 <state key="normal" title="back">
@@ -235,6 +235,27 @@
                                     <segue destination="uWU-o3-YJj" kind="unwind" unwindAction="backToInitialView:" id="yUs-Ek-80k"/>
                                 </connections>
                             </button>
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="locationLabel" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="hT5-AJ-aCd">
+                                <rect key="frame" x="20" y="38" width="280" height="29"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="dateLabel" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="wzo-jJ-dgT">
+                                <rect key="frame" x="20" y="59" width="58" height="21"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="13"/>
+                                <color key="textColor" red="0.40000000596046448" green="0.40000000596046448" blue="0.40000000596046448" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Tonight's Quiz!" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="lkz-KB-zbT">
+                                <rect key="frame" x="77" y="12" width="166" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                     </view>
@@ -930,6 +951,87 @@
             <point key="canvasLocation" x="433" y="-330"/>
         </scene>
     </scenes>
+    <classes>
+        <class className="CreateTeamViewController" superclassName="UIViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/CreateTeamViewController.h"/>
+            <relationships>
+                <relationship kind="outlet" name="teamNameInput" candidateClass="UITextField"/>
+            </relationships>
+        </class>
+        <class className="EventTableNewTeamCell" superclassName="UITableViewCell">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/EventTableNewTeamCell.h"/>
+            <relationships>
+                <relationship kind="outlet" name="createTeamButton" candidateClass="UIButton"/>
+            </relationships>
+        </class>
+        <class className="EventTableTeamCell" superclassName="UITableViewCell">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/EventTableTeamCell.h"/>
+            <relationships>
+                <relationship kind="outlet" name="nameLabel" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="standingLabel" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="teamScoreLabel" candidateClass="UILabel"/>
+            </relationships>
+        </class>
+        <class className="InitialViewController" superclassName="UIViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/InitialViewController.h"/>
+            <relationships>
+                <relationship kind="action" name="backToInitialView:" candidateClass="UIStoryboardSegue"/>
+                <relationship kind="action" name="hostAQuizPressed:" candidateClass="UIButton"/>
+                <relationship kind="action" name="uploadAQuizPressed:" candidateClass="UIButton"/>
+                <relationship kind="outlet" name="uploadButton" candidateClass="UIButton"/>
+            </relationships>
+        </class>
+        <class className="QuizTableViewController" superclassName="UIViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/QuizTableViewController.h"/>
+            <relationships>
+                <relationship kind="action" name="backToEventView:" candidateClass="UIStoryboardSegue"/>
+                <relationship kind="action" name="createTeam:" candidateClass="UIStoryboardSegue"/>
+                <relationship kind="outlet" name="tableView" candidateClass="UITableView"/>
+            </relationships>
+        </class>
+        <class className="RoundDetailViewController" superclassName="UIViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/RoundDetailViewController.h"/>
+            <relationships>
+                <relationship kind="action" name="jokerButtonPressed:" candidateClass="UIButton"/>
+                <relationship kind="action" name="scoreButtonPressed:" candidateClass="UIButton"/>
+                <relationship kind="action" name="swipe:" candidateClass="UISwipeGestureRecognizer"/>
+                <relationship kind="outlet" name="jokerButton" candidateClass="UIButton"/>
+                <relationship kind="outlet" name="roundLabel" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="roundScoreLabel" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="teamNameLabel" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="totalScoreLabel" candidateClass="UILabel"/>
+                <relationship kind="outletCollection" name="scoreLabels" candidateClass="UILabel"/>
+            </relationships>
+        </class>
+        <class className="TeamDetailViewController" superclassName="UIViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/TeamDetailViewController.h"/>
+            <relationships>
+                <relationship kind="action" name="backToTeamDetail:" candidateClass="UIStoryboardSegue"/>
+                <relationship kind="action" name="swipe:" candidateClass="UISwipeGestureRecognizer"/>
+                <relationship kind="action" name="viewRoundDetail:" candidateClass="UIButton"/>
+                <relationship kind="outlet" name="jokerImageView" candidateClass="UIImageView"/>
+                <relationship kind="outlet" name="teamNameLabel" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="teamScoreLabel" candidateClass="UILabel"/>
+                <relationship kind="outletCollection" name="roundButtons" candidateClass="UIButton"/>
+            </relationships>
+        </class>
+        <class className="UIStoryboardSegue" superclassName="NSObject">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/UIStoryboardSegue.h"/>
+        </class>
+        <class className="UploadQuizCell" superclassName="UITableViewCell">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/UploadQuizCell.h"/>
+            <relationships>
+                <relationship kind="outlet" name="dateLabel" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="locationLabel" candidateClass="UILabel"/>
+            </relationships>
+        </class>
+        <class className="UploadQuizViewController" superclassName="UIViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/UploadQuizViewController.h"/>
+            <relationships>
+                <relationship kind="outlet" name="tableView" candidateClass="UITableView"/>
+            </relationships>
+        </class>
+    </classes>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">
         <simulatedStatusBarMetrics key="statusBar"/>
         <simulatedOrientationMetrics key="orientation"/>
