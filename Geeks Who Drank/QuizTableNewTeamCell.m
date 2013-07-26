@@ -6,9 +6,9 @@
 //  Copyright (c) 2013 csfds. All rights reserved.
 //
 
-#import "EventTableNewTeamCell.h"
+#import "QuizTableNewTeamCell.h"
 
-@implementation EventTableNewTeamCell
+@implementation QuizTableNewTeamCell
 
 - (id)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier
 {
@@ -16,6 +16,7 @@
     if (self) {
         // Initialization code
     }
+    [self setBackgroundColor:[UIColor colorWithRed:255.0f/255.0f green:76.0f/255.0f blue:76.0f/255.0f alpha:1.0f]];
     return self;
 }
 

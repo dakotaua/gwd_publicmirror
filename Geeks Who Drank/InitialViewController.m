@@ -33,10 +33,51 @@
     return self;
 }
 
+- (void)configureButtons {
+    
+    NSString *tempS = @"upload a quiz";
+    NSMutableAttributedString *attributedString = [[NSMutableAttributedString alloc] initWithString:tempS];
+    [attributedString addAttribute:NSStrokeWidthAttributeName value:[NSNumber numberWithFloat:-10.0] range:NSMakeRange(0,tempS.length)];
+    [attributedString addAttribute:NSStrokeColorAttributeName value:[UIColor colorWithRed:127.0f/255.0f green:0 blue:0 alpha:1] range:NSMakeRange(0, tempS.length)];
+    [attributedString addAttribute:NSForegroundColorAttributeName value:[UIColor whiteColor] range:NSMakeRange(0, tempS.length)];
+    [attributedString addAttribute:NSFontAttributeName value:[UIFont fontWithName:@"Cupid-Wide-Normal" size:30.0f] range:NSMakeRange(0,tempS.length)];
+    [self.uploadButton setAttributedTitle:attributedString forState:UIControlStateNormal];
+    
+//    UIImage *buttonImage = [[UIImage imageNamed:@"orangeButton.png"] resizableImageWithCapInsets:UIEdgeInsetsMake(18, 18, 18, 18)];
+//    UIImage *buttonImageHighlight = [[UIImage imageNamed:@"orangeButtonHighlight.png"] resizableImageWithCapInsets:UIEdgeInsetsMake(18, 18, 18, 18)];
+//    [self.uploadButton setBackgroundImage:buttonImage forState:UIControlStateNormal];
+//    [self.uploadButton setBackgroundImage:buttonImageHighlight forState:UIControlStateHighlighted];
+    
+    tempS = @"start quizzin'!";
+    attributedString = [[NSMutableAttributedString alloc] initWithString:tempS];
+    [attributedString addAttribute:NSStrokeWidthAttributeName value:[NSNumber numberWithFloat:-10.0] range:NSMakeRange(0,tempS.length)];
+    [attributedString addAttribute:NSStrokeColorAttributeName value:[UIColor colorWithRed:127.0f/255.0f green:0 blue:0 alpha:1] range:NSMakeRange(0, tempS.length)];
+    [attributedString addAttribute:NSForegroundColorAttributeName value:[UIColor whiteColor] range:NSMakeRange(0, tempS.length)];
+    [attributedString addAttribute:NSFontAttributeName value:[UIFont fontWithName:@"Cupid-Wide-Normal" size:30.0f] range:NSMakeRange(0,tempS.length)];
+    [self.quizButton setAttributedTitle:attributedString forState:UIControlStateNormal];
+//    [self.quizButton setBackgroundImage:buttonImage forState:UIControlStateNormal];
+//    [self.quizButton setBackgroundImage:buttonImageHighlight forState:UIControlStateHighlighted];
+
+
+}
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-	// Do any additional setup after loading the view.
+ 
+//    for (NSString* family in [UIFont familyNames])
+//    {
+//        NSLog(@"%@", family);
+//        
+//        for (NSString* name in [UIFont fontNamesForFamilyName: family])
+//        {
+//            NSLog(@"  %@", name);
+//        }
+//    }
+    
+    [self configureButtons];
+    self.view.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"InitialViewBackground.png"]];
+
+  	// Do any additional setup after loading the view.
 }
 
 - (void)didReceiveMemoryWarning

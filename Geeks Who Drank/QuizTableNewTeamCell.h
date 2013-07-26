@@ -8,7 +8,7 @@
 
 #import <UIKit/UIKit.h>
 
-@interface EventTableNewTeamCell : UITableViewCell
+@interface QuizTableNewTeamCell : UITableViewCell
 @property (weak, nonatomic) IBOutlet UIButton *createTeamButton;
 
 @end

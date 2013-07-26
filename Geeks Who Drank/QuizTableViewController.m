@@ -137,10 +137,10 @@
     
     if ( self.quizEvent.quizzes.count > 0 && indexPath.row < self.quizEvent.quizzes.count ) {
         
-        EventTableTeamCell *teamCell = [tableView dequeueReusableCellWithIdentifier:@"teamCell"];
+        QuizTableTeamCell *teamCell = [tableView dequeueReusableCellWithIdentifier:@"teamCell"];
         
         if (!teamCell)
-            teamCell = [[EventTableTeamCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"teamCell"];
+            teamCell = [[QuizTableTeamCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"teamCell"];
         
         Quiz *team = [self.quizEvent.quizzes objectAtIndex:indexPath.row];
         teamCell.nameLabel.text = team.teamName;
@@ -174,10 +174,10 @@
         return teamCell;
     }
     else {
-        EventTableNewTeamCell *createTeamCell = [tableView dequeueReusableCellWithIdentifier:@"createTeamCell"];
+        QuizTableNewTeamCell *createTeamCell = [tableView dequeueReusableCellWithIdentifier:@"createTeamCell"];
         
         if (!createTeamCell)
-            createTeamCell = [[EventTableNewTeamCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"createaTeamCell"];
+            createTeamCell = [[QuizTableNewTeamCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"createaTeamCell"];
         
         NSString *addStr = (self.quizEvent.quizzes.count == 0 ? @"   Add a team..." : @"   Add another team...");
         [createTeamCell.createTeamButton setTitle:addStr forState:UIControlStateNormal];
@@ -185,7 +185,23 @@
     }
 }
 
-
+- (void) tableView:(UITableView *)tableView willDisplayCell:(UITableViewCell *)cell forRowAtIndexPath:(NSIndexPath *)indexPath {
+    
+    if ([cell isKindOfClass:[QuizTableTeamCell class]]){
+    
+        QuizTableTeamCell *teamCell = cell;
+        teamCell.backgroundColor = [UIColor colorWithRed:255.0f/255.0f green:76.0f/255.0f blue:76.0f/255.0f alpha:1.0f];
+        teamCell.nameLabel.backgroundColor = [UIColor clearColor];
+        teamCell.teamScoreLabel.backgroundColor = [UIColor clearColor];
+        teamCell.standingLabel.backgroundColor = [UIColor clearColor];
+    }
+    
+    if ([cell isKindOfClass:[QuizTableNewTeamCell class]]){
+        QuizTableTeamCell *addTeamCell = cell;
+        addTeamCell.backgroundColor = [UIColor colorWithRed:255.0f/255.0f green:76.0f/255.0f blue:76.0f/255.0f alpha:1.0f];
+    }
+    
+}
 /*
  // Override to support conditional editing of the table view.
  - (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath

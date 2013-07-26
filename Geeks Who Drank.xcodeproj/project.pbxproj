@@ -27,14 +27,30 @@
 		1D4B3EC417836E9000C9F649 /* QuizRound.m in Sources */ = {isa = PBXBuildFile; fileRef = 1D4B3EC317836E9000C9F649 /* QuizRound.m */; };
 		1D4B3EC71783714A00C9F649 /* QuizEvent.m in Sources */ = {isa = PBXBuildFile; fileRef = 1D4B3EC61783714A00C9F649 /* QuizEvent.m */; };
 		1D4FE9731796FD1F00302115 /* QuizTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1D4FE9721796FD1F00302115 /* QuizTableViewController.m */; };
-		1D5DCC5C178F3E430084C02B /* EventTableTeamCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 1D5DCC5B178F3E430084C02B /* EventTableTeamCell.m */; };
-		1D5DCC5F178F3E6C0084C02B /* EventTableNewTeamCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 1D5DCC5E178F3E6C0084C02B /* EventTableNewTeamCell.m */; };
+		1D5DCC5C178F3E430084C02B /* QuizTableTeamCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 1D5DCC5B178F3E430084C02B /* QuizTableTeamCell.m */; };
+		1D5DCC5F178F3E6C0084C02B /* QuizTableNewTeamCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 1D5DCC5E178F3E6C0084C02B /* QuizTableNewTeamCell.m */; };
 		1D5DCC65179064720084C02B /* CreateTeamViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1D5DCC64179064720084C02B /* CreateTeamViewController.m */; };
 		1D5DCC6817907BEF0084C02B /* TeamDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1D5DCC6717907BEF0084C02B /* TeamDetailViewController.m */; };
 		1D5DCC6B17909CD60084C02B /* RoundDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1D5DCC6A17909CD60084C02B /* RoundDetailViewController.m */; };
 		1D7137E31785F3F9003C0AA3 /* InitialViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1D7137E21785F3F9003C0AA3 /* InitialViewController.m */; };
 		1D9B30411798512D00F6BA8B /* UploadQuizViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1D9B30401798512D00F6BA8B /* UploadQuizViewController.m */; };
 		1D9B3044179851F600F6BA8B /* UploadQuizCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 1D9B3043179851F600F6BA8B /* UploadQuizCell.m */; };
+		1DEC7FB217A1E94B004C9A73 /* CupidWide-Italic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 1DEC7FB117A1E94B004C9A73 /* CupidWide-Italic.ttf */; };
+		1DEC7FB317A1E94B004C9A73 /* CupidWide-Italic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 1DEC7FB117A1E94B004C9A73 /* CupidWide-Italic.ttf */; };
+		1DEC7FB517A1EEED004C9A73 /* cupid-extended-normal.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 1DEC7FB417A1EEED004C9A73 /* cupid-extended-normal.ttf */; };
+		1DEC7FB617A1EEED004C9A73 /* cupid-extended-normal.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 1DEC7FB417A1EEED004C9A73 /* cupid-extended-normal.ttf */; };
+		1DEC7FBC17A1F416004C9A73 /* orangeButton.png in Resources */ = {isa = PBXBuildFile; fileRef = 1DEC7FB817A1F416004C9A73 /* orangeButton.png */; };
+		1DEC7FBD17A1F416004C9A73 /* orangeButton.png in Resources */ = {isa = PBXBuildFile; fileRef = 1DEC7FB817A1F416004C9A73 /* orangeButton.png */; };
+		1DEC7FBE17A1F416004C9A73 /* orangeButton@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 1DEC7FB917A1F416004C9A73 /* orangeButton@2x.png */; };
+		1DEC7FBF17A1F416004C9A73 /* orangeButton@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 1DEC7FB917A1F416004C9A73 /* orangeButton@2x.png */; };
+		1DEC7FC017A1F416004C9A73 /* orangeButtonHighlight.png in Resources */ = {isa = PBXBuildFile; fileRef = 1DEC7FBA17A1F416004C9A73 /* orangeButtonHighlight.png */; };
+		1DEC7FC117A1F416004C9A73 /* orangeButtonHighlight.png in Resources */ = {isa = PBXBuildFile; fileRef = 1DEC7FBA17A1F416004C9A73 /* orangeButtonHighlight.png */; };
+		1DEC7FC217A1F416004C9A73 /* orangeButtonHighlight@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 1DEC7FBB17A1F416004C9A73 /* orangeButtonHighlight@2x.png */; };
+		1DEC7FC317A1F416004C9A73 /* orangeButtonHighlight@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 1DEC7FBB17A1F416004C9A73 /* orangeButtonHighlight@2x.png */; };
+		1DEC7FC617A1F802004C9A73 /* InitialViewBackground.png in Resources */ = {isa = PBXBuildFile; fileRef = 1DEC7FC417A1F802004C9A73 /* InitialViewBackground.png */; };
+		1DEC7FC717A1F802004C9A73 /* InitialViewBackground.png in Resources */ = {isa = PBXBuildFile; fileRef = 1DEC7FC417A1F802004C9A73 /* InitialViewBackground.png */; };
+		1DEC7FC817A1F802004C9A73 /* InitialViewBackground@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 1DEC7FC517A1F802004C9A73 /* InitialViewBackground@2x.png */; };
+		1DEC7FC917A1F802004C9A73 /* InitialViewBackground@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 1DEC7FC517A1F802004C9A73 /* InitialViewBackground@2x.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -79,10 +95,10 @@
 		1D4B3EC91783F74900C9F649 /* Constants.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = Constants.h; path = Model/Constants.h; sourceTree = "<group>"; };
 		1D4FE9711796FD1F00302115 /* QuizTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QuizTableViewController.h; sourceTree = "<group>"; };
 		1D4FE9721796FD1F00302115 /* QuizTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QuizTableViewController.m; sourceTree = "<group>"; };
-		1D5DCC5A178F3E430084C02B /* EventTableTeamCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EventTableTeamCell.h; sourceTree = "<group>"; };
-		1D5DCC5B178F3E430084C02B /* EventTableTeamCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EventTableTeamCell.m; sourceTree = "<group>"; };
-		1D5DCC5D178F3E6B0084C02B /* EventTableNewTeamCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EventTableNewTeamCell.h; sourceTree = "<group>"; };
-		1D5DCC5E178F3E6C0084C02B /* EventTableNewTeamCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EventTableNewTeamCell.m; sourceTree = "<group>"; };
+		1D5DCC5A178F3E430084C02B /* QuizTableTeamCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QuizTableTeamCell.h; sourceTree = "<group>"; };
+		1D5DCC5B178F3E430084C02B /* QuizTableTeamCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QuizTableTeamCell.m; sourceTree = "<group>"; };
+		1D5DCC5D178F3E6B0084C02B /* QuizTableNewTeamCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QuizTableNewTeamCell.h; sourceTree = "<group>"; };
+		1D5DCC5E178F3E6C0084C02B /* QuizTableNewTeamCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QuizTableNewTeamCell.m; sourceTree = "<group>"; };
 		1D5DCC63179064710084C02B /* CreateTeamViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CreateTeamViewController.h; sourceTree = "<group>"; };
 		1D5DCC64179064720084C02B /* CreateTeamViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CreateTeamViewController.m; sourceTree = "<group>"; };
 		1D5DCC6617907BEF0084C02B /* TeamDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TeamDetailViewController.h; sourceTree = "<group>"; };
@@ -95,6 +111,14 @@
 		1D9B30401798512D00F6BA8B /* UploadQuizViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UploadQuizViewController.m; sourceTree = "<group>"; };
 		1D9B3042179851F600F6BA8B /* UploadQuizCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UploadQuizCell.h; sourceTree = "<group>"; };
 		1D9B3043179851F600F6BA8B /* UploadQuizCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UploadQuizCell.m; sourceTree = "<group>"; };
+		1DEC7FB117A1E94B004C9A73 /* CupidWide-Italic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "CupidWide-Italic.ttf"; sourceTree = "<group>"; };
+		1DEC7FB417A1EEED004C9A73 /* cupid-extended-normal.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "cupid-extended-normal.ttf"; sourceTree = "<group>"; };
+		1DEC7FB817A1F416004C9A73 /* orangeButton.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = orangeButton.png; sourceTree = "<group>"; };
+		1DEC7FB917A1F416004C9A73 /* orangeButton@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "orangeButton@2x.png"; sourceTree = "<group>"; };
+		1DEC7FBA17A1F416004C9A73 /* orangeButtonHighlight.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = orangeButtonHighlight.png; sourceTree = "<group>"; };
+		1DEC7FBB17A1F416004C9A73 /* orangeButtonHighlight@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "orangeButtonHighlight@2x.png"; sourceTree = "<group>"; };
+		1DEC7FC417A1F802004C9A73 /* InitialViewBackground.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = InitialViewBackground.png; sourceTree = "<group>"; };
+		1DEC7FC517A1F802004C9A73 /* InitialViewBackground@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "InitialViewBackground@2x.png"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -121,6 +145,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		1D20046A17A1B59E00346E0B /* Fonts */ = {
+			isa = PBXGroup;
+			children = (
+				1DEC7FB417A1EEED004C9A73 /* cupid-extended-normal.ttf */,
+				1DEC7FB117A1E94B004C9A73 /* CupidWide-Italic.ttf */,
+			);
+			name = Fonts;
+			sourceTree = "<group>";
+		};
 		1D4B3E7417825D8200C9F649 = {
 			isa = PBXGroup;
 			children = (
@@ -157,10 +190,10 @@
 			children = (
 				1D4B3EBE178260BE00C9F649 /* Model */,
 				1D4B3E9817825D8200C9F649 /* MainStoryboard.storyboard */,
-				1D5DCC5A178F3E430084C02B /* EventTableTeamCell.h */,
-				1D5DCC5B178F3E430084C02B /* EventTableTeamCell.m */,
-				1D5DCC5D178F3E6B0084C02B /* EventTableNewTeamCell.h */,
-				1D5DCC5E178F3E6C0084C02B /* EventTableNewTeamCell.m */,
+				1D5DCC5A178F3E430084C02B /* QuizTableTeamCell.h */,
+				1D5DCC5B178F3E430084C02B /* QuizTableTeamCell.m */,
+				1D5DCC5D178F3E6B0084C02B /* QuizTableNewTeamCell.h */,
+				1D5DCC5E178F3E6C0084C02B /* QuizTableNewTeamCell.m */,
 				1D9B3042179851F600F6BA8B /* UploadQuizCell.h */,
 				1D9B3043179851F600F6BA8B /* UploadQuizCell.m */,
 				1D7137E11785F3F9003C0AA3 /* InitialViewController.h */,
@@ -183,6 +216,8 @@
 		1D4B3E8717825D8200C9F649 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				1D20046A17A1B59E00346E0B /* Fonts */,
+				1DEC7FB717A1F3F6004C9A73 /* Images */,
 				1D4B3EC91783F74900C9F649 /* Constants.h */,
 				1D4B3E8F17825D8200C9F649 /* AppDelegate.h */,
 				1D4B3E9017825D8200C9F649 /* AppDelegate.m */,
@@ -229,6 +264,19 @@
 				1D4B3EC017836E4500C9F649 /* QuizQuestion.m */,
 			);
 			name = Model;
+			sourceTree = "<group>";
+		};
+		1DEC7FB717A1F3F6004C9A73 /* Images */ = {
+			isa = PBXGroup;
+			children = (
+				1DEC7FB817A1F416004C9A73 /* orangeButton.png */,
+				1DEC7FB917A1F416004C9A73 /* orangeButton@2x.png */,
+				1DEC7FBA17A1F416004C9A73 /* orangeButtonHighlight.png */,
+				1DEC7FBB17A1F416004C9A73 /* orangeButtonHighlight@2x.png */,
+				1DEC7FC417A1F802004C9A73 /* InitialViewBackground.png */,
+				1DEC7FC517A1F802004C9A73 /* InitialViewBackground@2x.png */,
+			);
+			name = Images;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -307,6 +355,14 @@
 				1D4B3E9517825D8200C9F649 /* Default@2x.png in Resources */,
 				1D4B3E9717825D8200C9F649 /* Default-568h@2x.png in Resources */,
 				1D4B3E9A17825D8200C9F649 /* MainStoryboard.storyboard in Resources */,
+				1DEC7FB217A1E94B004C9A73 /* CupidWide-Italic.ttf in Resources */,
+				1DEC7FB517A1EEED004C9A73 /* cupid-extended-normal.ttf in Resources */,
+				1DEC7FBC17A1F416004C9A73 /* orangeButton.png in Resources */,
+				1DEC7FBE17A1F416004C9A73 /* orangeButton@2x.png in Resources */,
+				1DEC7FC017A1F416004C9A73 /* orangeButtonHighlight.png in Resources */,
+				1DEC7FC217A1F416004C9A73 /* orangeButtonHighlight@2x.png in Resources */,
+				1DEC7FC617A1F802004C9A73 /* InitialViewBackground.png in Resources */,
+				1DEC7FC817A1F802004C9A73 /* InitialViewBackground@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -315,6 +371,14 @@
 			buildActionMask = 2147483647;
 			files = (
 				1D4B3EAF17825D8200C9F649 /* InfoPlist.strings in Resources */,
+				1DEC7FB317A1E94B004C9A73 /* CupidWide-Italic.ttf in Resources */,
+				1DEC7FB617A1EEED004C9A73 /* cupid-extended-normal.ttf in Resources */,
+				1DEC7FBD17A1F416004C9A73 /* orangeButton.png in Resources */,
+				1DEC7FBF17A1F416004C9A73 /* orangeButton@2x.png in Resources */,
+				1DEC7FC117A1F416004C9A73 /* orangeButtonHighlight.png in Resources */,
+				1DEC7FC317A1F416004C9A73 /* orangeButtonHighlight@2x.png in Resources */,
+				1DEC7FC717A1F802004C9A73 /* InitialViewBackground.png in Resources */,
+				1DEC7FC917A1F802004C9A73 /* InitialViewBackground@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -348,8 +412,8 @@
 				1D4B3EC417836E9000C9F649 /* QuizRound.m in Sources */,
 				1D4B3EC71783714A00C9F649 /* QuizEvent.m in Sources */,
 				1D7137E31785F3F9003C0AA3 /* InitialViewController.m in Sources */,
-				1D5DCC5C178F3E430084C02B /* EventTableTeamCell.m in Sources */,
-				1D5DCC5F178F3E6C0084C02B /* EventTableNewTeamCell.m in Sources */,
+				1D5DCC5C178F3E430084C02B /* QuizTableTeamCell.m in Sources */,
+				1D5DCC5F178F3E6C0084C02B /* QuizTableNewTeamCell.m in Sources */,
 				1D5DCC65179064720084C02B /* CreateTeamViewController.m in Sources */,
 				1D5DCC6817907BEF0084C02B /* TeamDetailViewController.m in Sources */,
 				1D5DCC6B17909CD60084C02B /* RoundDetailViewController.m in Sources */,

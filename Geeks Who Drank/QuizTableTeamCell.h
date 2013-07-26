@@ -8,7 +8,7 @@
 
 #import <UIKit/UIKit.h>
 
-@interface EventTableTeamCell : UITableViewCell
+@interface QuizTableTeamCell : UITableViewCell
 
 @property (weak, nonatomic) IBOutlet UILabel *nameLabel;
 @property (weak, nonatomic) IBOutlet UILabel *teamScoreLabel;

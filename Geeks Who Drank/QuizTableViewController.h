@@ -9,8 +9,8 @@
 #import <UIKit/UIKit.h>
 #import "QuizEvent.h"
 #import "CreateTeamViewController.h"
-#import "EventTableTeamCell.h"
-#import "EventTableNewTeamCell.h"
+#import "QuizTableTeamCell.h"
+#import "QuizTableNewTeamCell.h"
 #import "Quiz.h"
 #import "TeamDetailViewController.h"
 #import "Constants.h"
