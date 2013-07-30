@@ -8,6 +8,21 @@
 
 #import "QuizQuestion.h"
 
+@interface QuizQuestion()
+
+@property (readwrite, strong, nonatomic) NSDictionary *jsonDict;
+
+@end
+
 @implementation QuizQuestion
+
+-(NSDictionary *)jsonDict {
+    _jsonDict = @{
+        @"question_number": [NSNumber numberWithInt:self.questionNumber],
+                  @"score": [NSNumber numberWithInt:self.score]
+    };
+    
+    return _jsonDict;
+}
 
 @end

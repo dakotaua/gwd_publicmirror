@@ -12,8 +12,8 @@
 @interface QuizRound : NSObject
 
 @property (nonatomic) int roundNumber;
-@property (strong, nonatomic) NSArray *questions;
-@property (nonatomic, getter=isJokered) BOOL jokered;
+@property (strong, nonatomic) NSMutableArray *questions;
+@property (readonly, strong, nonatomic) NSDictionary *jsonDict;
 
 -(int)roundScore;
 

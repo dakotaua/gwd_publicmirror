@@ -13,8 +13,13 @@
 
 @property (strong, nonatomic) NSString *teamName;
 @property (nonatomic) int jokerRound;
-@property (strong, nonatomic) NSArray *quizRounds;
+@property (strong, nonatomic) NSMutableArray *quizRounds;
+@property (readonly, strong, nonatomic) NSDictionary *jsonDict;
 
 -(int)quizScore;
+-(id)initWithName:(NSString*)teamName;
+-(NSComparisonResult)compare:(Quiz *)otherQuiz;
+-(NSComparisonResult)reverseCompare:(Quiz *)otherQuiz;
+
 
 @end

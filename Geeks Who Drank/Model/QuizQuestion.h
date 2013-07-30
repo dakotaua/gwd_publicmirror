@@ -13,6 +13,7 @@
 @property (nonatomic) int score;
 @property (nonatomic) int questionNumber;
 @property (strong, nonatomic) NSString *questionText;
+@property (readonly, strong, nonatomic) NSDictionary *jsonDict;
 
 
 @end
