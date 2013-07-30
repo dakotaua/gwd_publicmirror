@@ -189,16 +189,14 @@
     
     if ([cell isKindOfClass:[QuizTableTeamCell class]]){
     
-        QuizTableTeamCell *teamCell = cell;
-        teamCell.backgroundColor = [UIColor colorWithRed:255.0f/255.0f green:76.0f/255.0f blue:76.0f/255.0f alpha:1.0f];
+        QuizTableTeamCell *teamCell = (QuizTableTeamCell *) cell;
         teamCell.nameLabel.backgroundColor = [UIColor clearColor];
         teamCell.teamScoreLabel.backgroundColor = [UIColor clearColor];
         teamCell.standingLabel.backgroundColor = [UIColor clearColor];
     }
     
     if ([cell isKindOfClass:[QuizTableNewTeamCell class]]){
-        QuizTableTeamCell *addTeamCell = cell;
-        addTeamCell.backgroundColor = [UIColor colorWithRed:255.0f/255.0f green:76.0f/255.0f blue:76.0f/255.0f alpha:1.0f];
+        // Pre-process QuizTableNewTeamCell here
     }
     
 }
