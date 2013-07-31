@@ -6,14 +6,14 @@
 //  Copyright (c) 2013 csfds. All rights reserved.
 //
 
-#import "UploadQuizViewController.h"
+#import "EventListViewController.h"
 
-@interface UploadQuizViewController () <UITableViewDelegate, UITableViewDataSource>
+@interface EventListViewController () <UITableViewDelegate, UITableViewDataSource>
 @property (strong, nonatomic) IBOutlet UITableView *tableView;
 
 @end
 
-@implementation UploadQuizViewController
+@implementation EventListViewController
 
 
 - (void) setup {

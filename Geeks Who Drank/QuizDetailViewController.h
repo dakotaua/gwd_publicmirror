@@ -10,7 +10,7 @@
 #import "Quiz.h"
 #import "RoundDetailViewController.h"
 
-@interface TeamDetailViewController : UIViewController
+@interface QuizDetailViewController : UIViewController
 
 @property (strong, nonatomic) Quiz *theTeam;
 @property (nonatomic) int teamIndex;

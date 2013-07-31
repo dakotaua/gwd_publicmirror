@@ -6,13 +6,13 @@
 //  Copyright (c) 2013 csfds. All rights reserved.
 //
 
-#import "TeamDetailViewController.h"
+#import "QuizDetailViewController.h"
 
-@interface TeamDetailViewController ()
+@interface QuizDetailViewController ()
 
 @end
 
-@implementation TeamDetailViewController
+@implementation QuizDetailViewController
 
 
 - (IBAction)swipe:(UISwipeGestureRecognizer *)sender {

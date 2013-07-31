@@ -8,10 +8,10 @@
 
 #import <UIKit/UIKit.h>
 #import "QuizEvent.h"
-#import "QuizTableViewController.h"
-#import "UploadQuizViewController.h"
+#import "QuizListViewController.h"
+#import "EventListViewController.h"
 
-@interface InitialViewController : UIViewController
+@interface HomeScreenViewController : UIViewController
 
 @property (strong,nonatomic) NSMutableArray* quizEventCollection;
 @property (strong, nonatomic) IBOutlet UIButton *uploadButton;

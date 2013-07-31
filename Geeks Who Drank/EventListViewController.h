@@ -10,7 +10,7 @@
 #import "UploadQuizCell.h"
 #import "QuizEvent.h"
 
-@interface UploadQuizViewController : UIViewController
+@interface EventListViewController : UIViewController
 
 @property (strong,nonatomic) NSMutableArray* quizEvents;
 

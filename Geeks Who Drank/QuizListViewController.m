@@ -6,14 +6,14 @@
 //  Copyright (c) 2013 csfds. All rights reserved.
 //
 
-#import "QuizTableViewController.h"
+#import "QuizListViewController.h"
 
-@interface QuizTableViewController () <UITableViewDataSource, UITableViewDelegate>
+@interface QuizListViewController () <UITableViewDataSource, UITableViewDelegate>
 @property (strong, nonatomic) IBOutlet UITableView *tableView;
 @property (strong, nonatomic) NSMutableArray *standings;
 @end
 
-@implementation QuizTableViewController
+@implementation QuizListViewController
 
 - (NSMutableArray*)standings {
     
@@ -64,7 +64,7 @@
 -(void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
     
     if ([segue.identifier isEqualToString:@"quizTableToTeamDetailSegue"]) {
-        TeamDetailViewController *teamDetailVC = [segue destinationViewController];
+        QuizDetailViewController *teamDetailVC = [segue destinationViewController];
         UITableViewCell *teamCell = sender;
         int teamIndex = [self.tableView indexPathForCell:teamCell].row;
         

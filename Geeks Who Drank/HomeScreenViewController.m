@@ -6,14 +6,14 @@
 //  Copyright (c) 2013 csfds. All rights reserved.
 //
 
-#import "InitialViewController.h"
+#import "HomeScreenViewController.h"
 
-@interface InitialViewController ()
+@interface HomeScreenViewController ()
 @property (nonatomic) BOOL showingHostFields;
 @property (strong, nonatomic) QuizEvent *currentQuizNight;
 @end
 
-@implementation InitialViewController
+@implementation HomeScreenViewController
 
 - (NSMutableArray*)quizEventCollection {
     
@@ -89,12 +89,12 @@
 - (void) prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender{
     
     if ([segue.identifier isEqualToString:@"hostAQuizSegue"]) {
-        QuizTableViewController *quizTableVC = segue.destinationViewController;
+        QuizListViewController *quizTableVC = segue.destinationViewController;
         quizTableVC.quizEvent = self.currentQuizNight;
     }
     
     if ([segue.identifier isEqualToString:@"uploadQuizSegue"]){
-        UploadQuizViewController *uploadQuizVC = segue.destinationViewController;
+        EventListViewController *uploadQuizVC = segue.destinationViewController;
         uploadQuizVC.quizEvents = self.quizEventCollection;
     }
 }
