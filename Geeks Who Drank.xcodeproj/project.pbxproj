@@ -34,7 +34,7 @@
 		1D5DCC6B17909CD60084C02B /* RoundDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1D5DCC6A17909CD60084C02B /* RoundDetailViewController.m */; };
 		1D7137E31785F3F9003C0AA3 /* HomeScreenViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1D7137E21785F3F9003C0AA3 /* HomeScreenViewController.m */; };
 		1D9B30411798512D00F6BA8B /* EventListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1D9B30401798512D00F6BA8B /* EventListViewController.m */; };
-		1D9B3044179851F600F6BA8B /* UploadQuizCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 1D9B3043179851F600F6BA8B /* UploadQuizCell.m */; };
+		1D9B3044179851F600F6BA8B /* EventCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 1D9B3043179851F600F6BA8B /* EventCell.m */; };
 		1DEC7FB217A1E94B004C9A73 /* CupidWide-Italic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 1DEC7FB117A1E94B004C9A73 /* CupidWide-Italic.ttf */; };
 		1DEC7FB317A1E94B004C9A73 /* CupidWide-Italic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 1DEC7FB117A1E94B004C9A73 /* CupidWide-Italic.ttf */; };
 		1DEC7FB517A1EEED004C9A73 /* cupid-extended-normal.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 1DEC7FB417A1EEED004C9A73 /* cupid-extended-normal.ttf */; };
@@ -109,8 +109,8 @@
 		1D7137E21785F3F9003C0AA3 /* HomeScreenViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HomeScreenViewController.m; sourceTree = "<group>"; };
 		1D9B303F1798512D00F6BA8B /* EventListViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EventListViewController.h; sourceTree = "<group>"; };
 		1D9B30401798512D00F6BA8B /* EventListViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EventListViewController.m; sourceTree = "<group>"; };
-		1D9B3042179851F600F6BA8B /* UploadQuizCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UploadQuizCell.h; sourceTree = "<group>"; };
-		1D9B3043179851F600F6BA8B /* UploadQuizCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UploadQuizCell.m; sourceTree = "<group>"; };
+		1D9B3042179851F600F6BA8B /* EventCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EventCell.h; sourceTree = "<group>"; };
+		1D9B3043179851F600F6BA8B /* EventCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EventCell.m; sourceTree = "<group>"; };
 		1DEC7FB117A1E94B004C9A73 /* CupidWide-Italic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "CupidWide-Italic.ttf"; sourceTree = "<group>"; };
 		1DEC7FB417A1EEED004C9A73 /* cupid-extended-normal.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "cupid-extended-normal.ttf"; sourceTree = "<group>"; };
 		1DEC7FB817A1F416004C9A73 /* orangeButton.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = orangeButton.png; sourceTree = "<group>"; };
@@ -194,8 +194,8 @@
 				1D5DCC5B178F3E430084C02B /* QuizTableTeamCell.m */,
 				1D5DCC5D178F3E6B0084C02B /* QuizTableNewTeamCell.h */,
 				1D5DCC5E178F3E6C0084C02B /* QuizTableNewTeamCell.m */,
-				1D9B3042179851F600F6BA8B /* UploadQuizCell.h */,
-				1D9B3043179851F600F6BA8B /* UploadQuizCell.m */,
+				1D9B3042179851F600F6BA8B /* EventCell.h */,
+				1D9B3043179851F600F6BA8B /* EventCell.m */,
 				1D7137E11785F3F9003C0AA3 /* HomeScreenViewController.h */,
 				1D7137E21785F3F9003C0AA3 /* HomeScreenViewController.m */,
 				1D9B303F1798512D00F6BA8B /* EventListViewController.h */,
@@ -419,7 +419,7 @@
 				1D5DCC6B17909CD60084C02B /* RoundDetailViewController.m in Sources */,
 				1D4FE9731796FD1F00302115 /* QuizListViewController.m in Sources */,
 				1D9B30411798512D00F6BA8B /* EventListViewController.m in Sources */,
-				1D9B3044179851F600F6BA8B /* UploadQuizCell.m in Sources */,
+				1D9B3044179851F600F6BA8B /* EventCell.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

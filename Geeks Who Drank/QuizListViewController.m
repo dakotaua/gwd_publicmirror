@@ -59,6 +59,8 @@
 - (IBAction)backToEventView:(UIStoryboardSegue*)segue {
     
     //[[self tableView] reloadData];
+    
+    // NOTE: This may need to implement additional logic to return to either the quiz list or the home screen.
 }
 
 -(void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {

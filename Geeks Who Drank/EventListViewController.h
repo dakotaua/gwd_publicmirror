@@ -7,7 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "UploadQuizCell.h"
+#import "EventCell.h"
 #import "QuizEvent.h"
 
 @interface EventListViewController : UIViewController

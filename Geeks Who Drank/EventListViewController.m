@@ -7,6 +7,7 @@
 //
 
 #import "EventListViewController.h"
+#import "QuizListViewController.h"
 
 @interface EventListViewController () <UITableViewDelegate, UITableViewDataSource>
 @property (strong, nonatomic) IBOutlet UITableView *tableView;
@@ -15,8 +16,20 @@
 
 @implementation EventListViewController
 
+- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
+    
+    if ([segue.identifier isEqualToString:@"editQuizSegue"]) {
+        QuizListViewController *quizListVC = segue.destinationViewController;
+        
+        if ([sender isKindOfClass:[EventCell class]]) {
+            EventCell *eventCell = (EventCell *)sender;
+            NSIndexPath *indexPath = [self.tableView indexPathForCell:eventCell];
+            quizListVC.quizEvent = [self.quizEvents objectAtIndex:indexPath.row];
+        }
+    }
+}
 
-- (void) setup {
+- (void)setup {
     
     self.tableView.delegate = self;
     self.tableView.dataSource  = self;
@@ -65,10 +78,10 @@
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     
-    UploadQuizCell *uploadCell = [tableView dequeueReusableCellWithIdentifier:@"uploadQuizCell"];
+    EventCell *uploadCell = [tableView dequeueReusableCellWithIdentifier:@"uploadQuizCell"];
     
     if (!uploadCell)
-        uploadCell = [[UploadQuizCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"uploadQuizCell"];
+        uploadCell = [[EventCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"uploadQuizCell"];
     QuizEvent* currentEvent = [self.quizEvents objectAtIndex:indexPath.row];
     
     uploadCell.locationLabel.text = currentEvent.location;
@@ -83,6 +96,8 @@
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
+    // TODO: add swipe functionality for uploading
+    /*
     NSError *error;
     QuizEvent *event = [self.quizEvents objectAtIndex:indexPath.row];
     NSData *jsonData = [
@@ -103,8 +118,7 @@
         
         NSLog(@"%@", jsonString);
     }
-    
-    // TODO: upload quiz to site API
+    */
 }
 
 @end

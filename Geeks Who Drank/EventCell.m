@@ -6,9 +6,9 @@
 //  Copyright (c) 2013 csfds. All rights reserved.
 //
 
-#import "UploadQuizCell.h"
+#import "EventCell.h"
 
-@implementation UploadQuizCell
+@implementation EventCell
 
 - (id)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier
 {

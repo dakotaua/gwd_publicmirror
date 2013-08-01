@@ -14,14 +14,12 @@
 @interface HomeScreenViewController : UIViewController
 
 @property (strong,nonatomic) NSMutableArray* quizEventCollection;
-@property (strong, nonatomic) IBOutlet UIButton *uploadButton;
 @property (strong, nonatomic) IBOutlet UIButton *quizButton;
 
 // temp solution
 @property (strong,nonatomic) NSString* user;
 
 
-- (IBAction)hostAQuizPressed:(UIButton *)sender;
-- (IBAction)uploadAQuizPressed:(UIButton *)sender;
+- (IBAction)startQuizzinPressed:(UIButton *)sender;
 
 @end

@@ -8,7 +8,7 @@
 
 #import <UIKit/UIKit.h>
 
-@interface UploadQuizCell : UITableViewCell
+@interface EventCell : UITableViewCell
 
 @property (strong, nonatomic) IBOutlet UILabel *locationLabel;
 @property (strong, nonatomic) IBOutlet UILabel *dateLabel;
