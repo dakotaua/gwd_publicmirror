@@ -1,21 +1,23 @@
 //
-//  UploadQuizCell.m
+//  EventTableNewEventCell.m
 //  Geeks Who Drank
 //
-//  Created by Dakota Scibilia on 7/18/13.
+//  Created by Colin Scott-Fleming on 8/1/13.
 //  Copyright (c) 2013 csfds. All rights reserved.
 //
 
-#import "UploadQuizCell.h"
+#import "EventTableNewEventCell.h"
 
-@implementation UploadQuizCell
+@implementation EventTableNewEventCell
 
 - (id)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier
 {
     self = [super initWithStyle:style reuseIdentifier:reuseIdentifier];
     if (self) {
-        // Initialization code
+        // Extra initialization
+        [self addSubview:self.createQuizButton];
     }
+
     return self;
 }
 

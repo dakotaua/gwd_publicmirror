@@ -12,10 +12,10 @@
 #import "QuizTableTeamCell.h"
 #import "QuizTableNewTeamCell.h"
 #import "Quiz.h"
-#import "TeamDetailViewController.h"
+#import "QuizDetailViewController.h"
 #import "Constants.h"
 
-@interface QuizTableViewController : UIViewController
+@interface QuizListViewController : UIViewController
 
 @property (strong, nonatomic) QuizEvent* quizEvent;
 @property (nonatomic) BOOL sortingByScore;

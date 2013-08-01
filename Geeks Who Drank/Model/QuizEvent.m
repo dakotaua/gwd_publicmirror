@@ -52,6 +52,14 @@
     return self;
 }
 
+-(id)initWithTempValues {
+    self = [self init];
+    self.quizMaster = @"Temp Quiz Master String";
+    self.location = @"Temp Location String";
+    
+    return self;
+}
+
 
 -(NSString *)quizMaster {
     

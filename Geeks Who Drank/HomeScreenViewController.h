@@ -8,20 +8,18 @@
 
 #import <UIKit/UIKit.h>
 #import "QuizEvent.h"
-#import "QuizTableViewController.h"
-#import "UploadQuizViewController.h"
+#import "QuizListViewController.h"
+#import "EventListViewController.h"
 
-@interface InitialViewController : UIViewController
+@interface HomeScreenViewController : UIViewController
 
 @property (strong,nonatomic) NSMutableArray* quizEventCollection;
-@property (strong, nonatomic) IBOutlet UIButton *uploadButton;
 @property (strong, nonatomic) IBOutlet UIButton *quizButton;
 
 // temp solution
 @property (strong,nonatomic) NSString* user;
 
-
-- (IBAction)hostAQuizPressed:(UIButton *)sender;
-- (IBAction)uploadAQuizPressed:(UIButton *)sender;
+- (IBAction)backToInitialView:(UIStoryboardSegue*)segue;
+- (IBAction)startQuizzinPressed:(UIButton *)sender;
 
 @end

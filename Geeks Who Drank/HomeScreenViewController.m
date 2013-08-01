@@ -6,14 +6,14 @@
 //  Copyright (c) 2013 csfds. All rights reserved.
 //
 
-#import "InitialViewController.h"
+#import "HomeScreenViewController.h"
 
-@interface InitialViewController ()
+@interface HomeScreenViewController ()
 @property (nonatomic) BOOL showingHostFields;
 @property (strong, nonatomic) QuizEvent *currentQuizNight;
 @end
 
-@implementation InitialViewController
+@implementation HomeScreenViewController
 
 - (NSMutableArray*)quizEventCollection {
     
@@ -35,21 +35,8 @@
 
 - (void)configureButtons {
     
-    NSString *tempS = @"upload a quiz";
+    NSString *tempS = @"start quizzin!";
     NSMutableAttributedString *attributedString = [[NSMutableAttributedString alloc] initWithString:tempS];
-    [attributedString addAttribute:NSStrokeWidthAttributeName value:[NSNumber numberWithFloat:-10.0] range:NSMakeRange(0,tempS.length)];
-    [attributedString addAttribute:NSStrokeColorAttributeName value:[UIColor colorWithRed:127.0f/255.0f green:0 blue:0 alpha:1] range:NSMakeRange(0, tempS.length)];
-    [attributedString addAttribute:NSForegroundColorAttributeName value:[UIColor whiteColor] range:NSMakeRange(0, tempS.length)];
-    [attributedString addAttribute:NSFontAttributeName value:[UIFont fontWithName:@"Cupid-Wide-Normal" size:30.0f] range:NSMakeRange(0,tempS.length)];
-    [self.uploadButton setAttributedTitle:attributedString forState:UIControlStateNormal];
-    
-//    UIImage *buttonImage = [[UIImage imageNamed:@"orangeButton.png"] resizableImageWithCapInsets:UIEdgeInsetsMake(18, 18, 18, 18)];
-//    UIImage *buttonImageHighlight = [[UIImage imageNamed:@"orangeButtonHighlight.png"] resizableImageWithCapInsets:UIEdgeInsetsMake(18, 18, 18, 18)];
-//    [self.uploadButton setBackgroundImage:buttonImage forState:UIControlStateNormal];
-//    [self.uploadButton setBackgroundImage:buttonImageHighlight forState:UIControlStateHighlighted];
-    
-    tempS = @"start quizzin'!";
-    attributedString = [[NSMutableAttributedString alloc] initWithString:tempS];
     [attributedString addAttribute:NSStrokeWidthAttributeName value:[NSNumber numberWithFloat:-10.0] range:NSMakeRange(0,tempS.length)];
     [attributedString addAttribute:NSStrokeColorAttributeName value:[UIColor colorWithRed:127.0f/255.0f green:0 blue:0 alpha:1] range:NSMakeRange(0, tempS.length)];
     [attributedString addAttribute:NSForegroundColorAttributeName value:[UIColor whiteColor] range:NSMakeRange(0, tempS.length)];
@@ -88,30 +75,43 @@
 
 - (void) prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender{
     
-    if ([segue.identifier isEqualToString:@"hostAQuizSegue"]) {
-        QuizTableViewController *quizTableVC = segue.destinationViewController;
-        quizTableVC.quizEvent = self.currentQuizNight;
+    if ([segue.identifier isEqualToString:@"newEventSegue"]) {
+        QuizListViewController *newEventVC = segue.destinationViewController;
+        newEventVC.quizEvent = self.currentQuizNight;
     }
     
-    if ([segue.identifier isEqualToString:@"uploadQuizSegue"]){
-        UploadQuizViewController *uploadQuizVC = segue.destinationViewController;
-        uploadQuizVC.quizEvents = self.quizEventCollection;
+    if ([segue.identifier isEqualToString:@"eventListSegue"]){
+        EventListViewController *eventListVC = segue.destinationViewController;
+        eventListVC.quizEvents = self.quizEventCollection;
+    }
+    
+    if ([segue.identifier isEqualToString:@"eventDetailSegue"]) {
+        QuizListViewController *eventVC = segue.destinationViewController;
+        eventVC.quizEvent = self.currentQuizNight;
     }
 }
 
-
-- (IBAction)hostAQuizPressed:(UIButton *)sender {
+/**
+ * This action checks to see if there are existing quizzes in the quiz event collection.
+ *
+ * If there are no quizzes, a new quiz is created, and this will segue to the quiz list view to start adding teams.
+ *
+ * If there are quizzes, this will segue to the event list view to choose an event to score or upload.
+ */
+- (IBAction)startQuizzinPressed:(UIButton *)sender {
     
-    QuizEvent *newNight = [[QuizEvent alloc] init];
-    newNight.quizMaster = @"Temp Quiz Master string";
-    newNight.location = @"Temp Location string";
-    [self.quizEventCollection addObject:newNight];
-    self.currentQuizNight = newNight;
+    if ([self.quizEventCollection count] == 0) {
+        QuizEvent *newNight = [[QuizEvent alloc] initWithTempValues];
+        
+        [self.quizEventCollection addObject:newNight];
+        self.currentQuizNight = newNight;
+        
+        [self performSegueWithIdentifier:@"newEventSegue" sender:sender];
+    }
     
-    [self performSegueWithIdentifier:@"hostAQuizSegue" sender:sender];
-    
+    else {
+        [self performSegueWithIdentifier:@"eventListSegue" sender:sender];
+    }
 }
 
-- (IBAction)uploadAQuizPressed:(UIButton *)sender {
-}
 @end
