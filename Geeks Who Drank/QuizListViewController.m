@@ -58,7 +58,7 @@
 
 - (IBAction)backToEventView:(UIStoryboardSegue*)segue {
     
-    //[[self tableView] reloadData];
+    // [[self tableView] reloadData];
     
     // NOTE: This may need to implement additional logic to return to either the quiz list or the home screen.
 }
@@ -81,14 +81,16 @@
     
     self.standings = [[NSMutableArray alloc] init];
     
-    if (self.quizEvent.quizzes && self.quizEvent.quizzes.count && self.sortingByScore) {
+    if (self.quizEvent.quizzes && [self.quizEvent.quizzes count] && self.sortingByScore) {
         
         // sort teams by score
         NSArray *sorted;
         sorted = [self.quizEvent.quizzes sortedArrayUsingSelector:@selector(reverseCompare:)];
         self.quizEvent.quizzes = [NSMutableArray arrayWithArray:sorted];
-        [self.tableView reloadData];
+
     }
+    
+    [self.tableView reloadData];
 }
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
@@ -137,7 +139,7 @@
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     
-    if ( self.quizEvent.quizzes.count > 0 && indexPath.row < self.quizEvent.quizzes.count ) {
+    if ( [self.quizEvent.quizzes count] > 0 && indexPath.row < [self.quizEvent.quizzes count] ) {
         
         QuizTableTeamCell *teamCell = [tableView dequeueReusableCellWithIdentifier:@"teamCell"];
         
@@ -179,7 +181,7 @@
         QuizTableNewTeamCell *createTeamCell = [tableView dequeueReusableCellWithIdentifier:@"createTeamCell"];
         
         if (!createTeamCell)
-            createTeamCell = [[QuizTableNewTeamCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"createaTeamCell"];
+            createTeamCell = [[QuizTableNewTeamCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"createTeamCell"];
         
         NSString *addStr = (self.quizEvent.quizzes.count == 0 ? @"   Add a team..." : @"   Add another team...");
         [createTeamCell.createTeamButton setTitle:addStr forState:UIControlStateNormal];

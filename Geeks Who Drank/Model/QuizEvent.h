@@ -19,6 +19,7 @@
 @property (strong, nonatomic) NSOrderedSet *standings;
 @property (readonly, strong, nonatomic) NSDictionary *jsonDict;
 
+-(id)initWithTempValues;
 -(void)uploadEvent;
 
 @end

@@ -35,7 +35,7 @@
 
 - (void)configureButtons {
     
-    NSString *tempS = @"start quizzin'!";
+    NSString *tempS = @"quiz!";
     NSMutableAttributedString *attributedString = [[NSMutableAttributedString alloc] initWithString:tempS];
     [attributedString addAttribute:NSStrokeWidthAttributeName value:[NSNumber numberWithFloat:-10.0] range:NSMakeRange(0,tempS.length)];
     [attributedString addAttribute:NSStrokeColorAttributeName value:[UIColor colorWithRed:127.0f/255.0f green:0 blue:0 alpha:1] range:NSMakeRange(0, tempS.length)];
@@ -101,9 +101,8 @@
 - (IBAction)startQuizzinPressed:(UIButton *)sender {
     
     if ([self.quizEventCollection count] == 0) {
-        QuizEvent *newNight = [[QuizEvent alloc] init];
-        newNight.quizMaster = @"Temp Quiz Master string";
-        newNight.location = @"Temp Location string";
+        QuizEvent *newNight = [[QuizEvent alloc] initWithTempValues];
+        
         [self.quizEventCollection addObject:newNight];
         self.currentQuizNight = newNight;
         

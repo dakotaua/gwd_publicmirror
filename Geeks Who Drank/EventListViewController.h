@@ -7,11 +7,14 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "EventCell.h"
+#import "EventTableEventCell.h"
+#import "EventTableNewEventCell.h"
 #import "QuizEvent.h"
 
 @interface EventListViewController : UIViewController
 
 @property (strong,nonatomic) NSMutableArray* quizEvents;
+
+- (IBAction)startNewQuiz:(UIButton *)sender;
 
 @end

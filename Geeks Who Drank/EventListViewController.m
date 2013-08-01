@@ -16,15 +16,25 @@
 
 @implementation EventListViewController
 
+- (IBAction)startNewQuiz:(UIButton *)sender {
+    [self performSegueWithIdentifier:@"editEventSegue" sender:sender];
+}
+
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
     
-    if ([segue.identifier isEqualToString:@"editQuizSegue"]) {
+    if ([segue.identifier isEqualToString:@"editEventSegue"]) {
         QuizListViewController *quizListVC = segue.destinationViewController;
         
-        if ([sender isKindOfClass:[EventCell class]]) {
-            EventCell *eventCell = (EventCell *)sender;
+        if ([sender isKindOfClass:[EventTableEventCell class]]) {
+            EventTableEventCell *eventCell = (EventTableEventCell *)sender;
             NSIndexPath *indexPath = [self.tableView indexPathForCell:eventCell];
             quizListVC.quizEvent = [self.quizEvents objectAtIndex:indexPath.row];
+        }
+        
+        if ([sender isKindOfClass:[EventTableNewEventCell class]]) {
+            QuizEvent *newEvent = [[QuizEvent alloc] initWithTempValues];
+            [self.quizEvents addObject:newEvent];
+            quizListVC.quizEvent = newEvent;
         }
     }
 }
@@ -34,7 +44,6 @@
     self.tableView.delegate = self;
     self.tableView.dataSource  = self;
     [self.view addSubview:self.tableView];
-    
 }
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
@@ -72,26 +81,38 @@
 {
     // Return the number of rows in the section, which is equal to the number of events in the collection
     // plus one for the create team button
-    return self.quizEvents.count;
+    return [self.quizEvents count] + 1;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
+    if ([self.quizEvents count] > 0 && indexPath.row < [self.quizEvents count]) {
+        EventTableEventCell *eventCell = [tableView dequeueReusableCellWithIdentifier:@"eventCell"];
+        
+        if (!eventCell)
+            eventCell = [[EventTableEventCell alloc] initWithStyle:UITableViewCellStyleDefault
+                                                   reuseIdentifier:@"eventCell"];
+        
+        QuizEvent* currentEvent = [self.quizEvents objectAtIndex:indexPath.row];
+        
+        eventCell.locationLabel.text = currentEvent.location;
+        
+        NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
+        [dateFormatter setDateStyle:NSDateFormatterShortStyle];
+        eventCell.dateLabel.text = [dateFormatter stringFromDate:currentEvent.quizDate];
+        
+        return eventCell;
+    }
     
-    EventCell *uploadCell = [tableView dequeueReusableCellWithIdentifier:@"uploadQuizCell"];
-    
-    if (!uploadCell)
-        uploadCell = [[EventCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"uploadQuizCell"];
-    QuizEvent* currentEvent = [self.quizEvents objectAtIndex:indexPath.row];
-    
-    uploadCell.locationLabel.text = currentEvent.location;
-    
-    NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
-    [dateFormatter setDateStyle:NSDateFormatterShortStyle];
-    uploadCell.dateLabel.text = [dateFormatter stringFromDate:currentEvent.quizDate];
-    
-    return uploadCell;
-    
+    else {
+        EventTableNewEventCell *newEventCell = [tableView dequeueReusableCellWithIdentifier:@"newEventCell"];
+        
+        if (!newEventCell)
+            newEventCell = [[EventTableNewEventCell alloc] initWithStyle:UITableViewCellStyleDefault
+                                                         reuseIdentifier:@"newEventCell"];
+        
+        return newEventCell;
+    }
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath

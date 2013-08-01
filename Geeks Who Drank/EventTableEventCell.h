@@ -8,7 +8,7 @@
 
 #import <UIKit/UIKit.h>
 
-@interface EventCell : UITableViewCell
+@interface EventTableEventCell : UITableViewCell
 
 @property (strong, nonatomic) IBOutlet UILabel *locationLabel;
 @property (strong, nonatomic) IBOutlet UILabel *dateLabel;
