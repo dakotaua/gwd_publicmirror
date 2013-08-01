@@ -15,6 +15,6 @@
 
 @property (strong,nonatomic) NSMutableArray* quizEvents;
 
-- (IBAction)startNewQuiz:(UIButton *)sender;
+- (IBAction)editQuiz:(EventTableEventCell *)sender;
 
 @end

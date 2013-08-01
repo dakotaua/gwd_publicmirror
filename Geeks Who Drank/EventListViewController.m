@@ -16,8 +16,18 @@
 
 @implementation EventListViewController
 
+- (IBAction)editQuiz:(id)sender {
+    if ([sender isKindOfClass:[UILongPressGestureRecognizer class]]) {
+        UILongPressGestureRecognizer *gesture = (UILongPressGestureRecognizer *)sender;
+        EventTableNewEventCell *cell = (EventTableNewEventCell *)gesture.view;
+        
+        [self performSegueWithIdentifier:@"editEventSegue" sender:cell];
+    }
+}
+
 - (IBAction)startNewQuiz:(UIButton *)sender {
-    [self performSegueWithIdentifier:@"editEventSegue" sender:sender];
+    EventTableNewEventCell *cell = (EventTableNewEventCell *) sender.superview.superview;
+    [self performSegueWithIdentifier:@"editEventSegue" sender:cell];
 }
 
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
@@ -101,6 +111,11 @@
         [dateFormatter setDateStyle:NSDateFormatterShortStyle];
         eventCell.dateLabel.text = [dateFormatter stringFromDate:currentEvent.quizDate];
         
+        [eventCell addGestureRecognizer:
+            [[UILongPressGestureRecognizer alloc] initWithTarget:self
+                                                          action:@selector(editQuiz:)]
+        ];
+
         return eventCell;
     }
     
@@ -118,7 +133,7 @@
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
     // TODO: add swipe functionality for uploading
-    /*
+
     NSError *error;
     QuizEvent *event = [self.quizEvents objectAtIndex:indexPath.row];
     NSData *jsonData = [
@@ -128,7 +143,7 @@
     ];
     
     if (!jsonData) {
-        NSLog(@"Got an error: %@", error);
+        NSLog(@"Something went wrong with building the Event plist: %@", error);
     }
     
     else {
@@ -139,7 +154,7 @@
         
         NSLog(@"%@", jsonString);
     }
-    */
+
 }
 
 @end

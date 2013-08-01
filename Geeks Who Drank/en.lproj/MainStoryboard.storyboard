@@ -73,10 +73,10 @@
                                             </subviews>
                                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                         </view>
+                                        <gestureRecognizers/>
                                         <connections>
                                             <outlet property="dateLabel" destination="OCh-o8-ZSF" id="pGk-4o-mHz"/>
                                             <outlet property="locationLabel" destination="bTG-bK-kQT" id="PEJ-Re-X9N"/>
-                                            <segue destination="Xre-WA-XEP" kind="modal" identifier="editEventSegue" id="vB0-Et-YWo"/>
                                         </connections>
                                     </tableViewCell>
                                     <tableViewCell contentMode="scaleToFill" selectionStyle="blue" indentationWidth="10" reuseIdentifier="newEventCell" id="edZ-ha-uFt" customClass="EventTableNewEventCell">
@@ -98,12 +98,15 @@
                                                         <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                     </state>
                                                     <connections>
-                                                        <action selector="startNewQuiz:" destination="3P2-ws-jPg" eventType="touchUpInside" id="GdI-HI-Azg"/>
+                                                        <action selector="startNewQuiz:" destination="3P2-ws-jPg" eventType="touchUpInside" id="aml-bF-zNE"/>
                                                     </connections>
                                                 </button>
                                             </subviews>
                                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                         </view>
+                                        <connections>
+                                            <outlet property="createQuizButton" destination="UyI-LL-bHs" id="ZYj-rZ-JvB"/>
+                                        </connections>
                                     </tableViewCell>
                                 </prototypes>
                             </tableView>
@@ -134,6 +137,7 @@
                     </view>
                     <connections>
                         <outlet property="tableView" destination="pXU-C6-jaK" id="62J-Xi-Lub"/>
+                        <segue destination="Xre-WA-XEP" kind="modal" identifier="editEventSegue" id="9dP-OT-TgW"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="uqd-V5-vM7" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -263,7 +267,7 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Zdr-yX-ihB" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <exit id="uWU-o3-YJj" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
-            <point key="canvasLocation" x="271" y="-1206"/>
+            <point key="canvasLocation" x="271" y="-1212"/>
         </scene>
         <!--Quiz Detail View Controller-->
         <scene sceneID="rFF-Ti-Q9f">
@@ -462,7 +466,7 @@
                     </connections>
                 </swipeGestureRecognizer>
             </objects>
-            <point key="canvasLocation" x="811" y="-1206"/>
+            <point key="canvasLocation" x="811" y="-1212"/>
         </scene>
         <!--Round Detail View Controller-->
         <scene sceneID="nli-Bd-fTW">
@@ -874,7 +878,7 @@
                     </connections>
                 </swipeGestureRecognizer>
             </objects>
-            <point key="canvasLocation" x="1358" y="-1206"/>
+            <point key="canvasLocation" x="1358" y="-1212"/>
         </scene>
         <!--Create Team View Controller-->
         <scene sceneID="djr-dk-Lvp">
@@ -945,7 +949,7 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="YbC-Zz-rRh" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <exit id="9sz-ez-Nby" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
-            <point key="canvasLocation" x="811" y="-596"/>
+            <point key="canvasLocation" x="811" y="-602"/>
         </scene>
     </scenes>
     <classes>
@@ -958,8 +962,7 @@
         <class className="EventListViewController" superclassName="UIViewController">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/EventListViewController.h"/>
             <relationships>
-                <relationship kind="action" name="startNewQuiz"/>
-                <relationship kind="action" name="startNewQuiz:" candidateClass="UIButton"/>
+                <relationship kind="action" name="editQuiz:" candidateClass="EventTableEventCell"/>
                 <relationship kind="outlet" name="tableView" candidateClass="UITableView"/>
             </relationships>
         </class>
@@ -1042,6 +1045,6 @@
         <simulatedScreenMetrics key="destination"/>
     </simulatedMetricsContainer>
     <inferredMetricsTieBreakers>
-        <segue reference="vB0-Et-YWo"/>
+        <segue reference="9dP-OT-TgW"/>
     </inferredMetricsTieBreakers>
 </document>
