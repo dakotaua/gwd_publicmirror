@@ -35,7 +35,7 @@
 
 - (void)configureButtons {
     
-    NSString *tempS = @"quiz!";
+    NSString *tempS = @"start quizzin!";
     NSMutableAttributedString *attributedString = [[NSMutableAttributedString alloc] initWithString:tempS];
     [attributedString addAttribute:NSStrokeWidthAttributeName value:[NSNumber numberWithFloat:-10.0] range:NSMakeRange(0,tempS.length)];
     [attributedString addAttribute:NSStrokeColorAttributeName value:[UIColor colorWithRed:127.0f/255.0f green:0 blue:0 alpha:1] range:NSMakeRange(0, tempS.length)];

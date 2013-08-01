@@ -19,7 +19,7 @@
 // temp solution
 @property (strong,nonatomic) NSString* user;
 
-
+- (IBAction)backToInitialView:(UIStoryboardSegue*)segue;
 - (IBAction)startQuizzinPressed:(UIButton *)sender;
 
 @end

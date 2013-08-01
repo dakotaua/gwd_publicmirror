@@ -240,7 +240,7 @@
                                     <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
-                                    <segue destination="uWU-o3-YJj" kind="unwind" unwindAction="backToInitialView:" id="yUs-Ek-80k"/>
+                                    <segue destination="uWU-o3-YJj" kind="unwind" unwindAction="backToInitialView:" id="GAv-Pb-2ML"/>
                                 </connections>
                             </button>
                             <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="locationLabel" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="hT5-AJ-aCd">
@@ -962,8 +962,9 @@
         <class className="EventListViewController" superclassName="UIViewController">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/EventListViewController.h"/>
             <relationships>
+                <relationship kind="action" name="backToEventList:" candidateClass="UIStoryboardSegue"/>
                 <relationship kind="action" name="editQuiz:" candidateClass="EventTableEventCell"/>
-                <relationship kind="action" name="startNewQuiz:" candidateClass="UIButton"/>
+                <relationship kind="action" name="startNewQuiz:" candidateClass="UILongPressGestureRecognizer"/>
                 <relationship kind="outlet" name="tableView" candidateClass="UITableView"/>
             </relationships>
         </class>
@@ -1046,6 +1047,6 @@
         <simulatedScreenMetrics key="destination"/>
     </simulatedMetricsContainer>
     <inferredMetricsTieBreakers>
-        <segue reference="kuQ-XM-Oad"/>
+        <segue reference="EaS-J8-qVD"/>
     </inferredMetricsTieBreakers>
 </document>

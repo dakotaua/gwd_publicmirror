@@ -17,5 +17,6 @@
 
 - (IBAction)editQuiz:(EventTableEventCell *)sender;
 - (IBAction)startNewQuiz:(UILongPressGestureRecognizer *)gesture;
+- (IBAction)backToEventList:(UIStoryboardSegue *)segue;
 
 @end
