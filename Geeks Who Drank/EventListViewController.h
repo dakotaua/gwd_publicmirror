@@ -16,5 +16,6 @@
 @property (strong,nonatomic) NSMutableArray* quizEvents;
 
 - (IBAction)editQuiz:(EventTableEventCell *)sender;
+- (IBAction)startNewQuiz:(UILongPressGestureRecognizer *)gesture;
 
 @end

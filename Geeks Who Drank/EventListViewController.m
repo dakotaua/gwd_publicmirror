@@ -16,11 +16,9 @@
 
 @implementation EventListViewController
 
-- (IBAction)editQuiz:(id)sender {
-    if ([sender isKindOfClass:[UILongPressGestureRecognizer class]]) {
-        UILongPressGestureRecognizer *gesture = (UILongPressGestureRecognizer *)sender;
+- (IBAction)editQuiz:(UILongPressGestureRecognizer *)gesture {
+    if (gesture.state == UIGestureRecognizerStateBegan) {
         EventTableNewEventCell *cell = (EventTableNewEventCell *)gesture.view;
-        
         [self performSegueWithIdentifier:@"editEventSegue" sender:cell];
     }
 }

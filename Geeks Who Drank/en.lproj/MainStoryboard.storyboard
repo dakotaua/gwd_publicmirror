@@ -137,7 +137,7 @@
                     </view>
                     <connections>
                         <outlet property="tableView" destination="pXU-C6-jaK" id="62J-Xi-Lub"/>
-                        <segue destination="Xre-WA-XEP" kind="modal" identifier="editEventSegue" id="9dP-OT-TgW"/>
+                        <segue destination="Xre-WA-XEP" kind="modal" identifier="editEventSegue" id="kuQ-XM-Oad"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="uqd-V5-vM7" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -963,6 +963,7 @@
             <source key="sourceIdentifier" type="project" relativePath="./Classes/EventListViewController.h"/>
             <relationships>
                 <relationship kind="action" name="editQuiz:" candidateClass="EventTableEventCell"/>
+                <relationship kind="action" name="startNewQuiz:" candidateClass="UIButton"/>
                 <relationship kind="outlet" name="tableView" candidateClass="UITableView"/>
             </relationships>
         </class>
@@ -1045,6 +1046,6 @@
         <simulatedScreenMetrics key="destination"/>
     </simulatedMetricsContainer>
     <inferredMetricsTieBreakers>
-        <segue reference="9dP-OT-TgW"/>
+        <segue reference="kuQ-XM-Oad"/>
     </inferredMetricsTieBreakers>
 </document>
