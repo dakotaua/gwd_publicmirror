@@ -26,7 +26,7 @@
 
 - (void)testExample
 {
-    STFail(@"Unit tests are not implemented yet in Geeks Who DrankTests");
+    STAssertEquals(2, 2, @"Hooray two is two.");
 }
 
 @end
