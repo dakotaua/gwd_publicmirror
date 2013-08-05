@@ -16,5 +16,6 @@
 @property (readonly, strong, nonatomic) NSDictionary *jsonDict;
 
 -(int)roundScore;
+-(NSDictionary *)serialize;
 
 @end

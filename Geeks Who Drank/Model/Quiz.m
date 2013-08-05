@@ -35,6 +35,18 @@
     return _jsonDict;
 }
 
+-(NSDictionary *)serialize {
+    NSMutableArray *quizRounds = [[NSMutableArray alloc] init];
+    
+    for (QuizRound *quizRound in self.quizRounds) {
+        [quizRounds addObject:[quizRound serialize]];
+    }
+    
+    return @{@"teamName":self.teamName,
+             @"jokerRound":[NSNumber numberWithInt:self.jokerRound],
+             @"quizRounds":quizRounds};
+}
+
 -(NSComparisonResult)reverseCompare:(Quiz *)otherQuiz{
     NSNumber* myScore = [NSNumber numberWithInt:[self quizScore]];
     NSNumber* otherScore = [NSNumber numberWithInt:[otherQuiz quizScore]];

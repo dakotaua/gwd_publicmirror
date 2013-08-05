@@ -44,6 +44,19 @@
     return _jsonDict;
 }
 
+-(NSDictionary *)serialize {
+    NSMutableArray *quizzes = [[NSMutableArray alloc] init];
+    
+    for (Quiz *quiz in self.quizzes) {
+        [quizzes addObject:[quiz serialize]];
+    }
+    
+    return @{@"quizMaster":self.quizMaster,
+             @"location":self.location,
+             @"quizDate":self.quizDate,
+             @"quizzes":quizzes};
+}
+
 -(id)init {
     
     self = [super init];

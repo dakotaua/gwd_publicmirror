@@ -21,5 +21,6 @@
 
 -(id)initWithTempValues;
 -(void)uploadEvent;
+-(NSDictionary *)serialize;
 
 @end

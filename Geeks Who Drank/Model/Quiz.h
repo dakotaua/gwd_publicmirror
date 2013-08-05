@@ -20,6 +20,6 @@
 -(id)initWithName:(NSString*)teamName;
 -(NSComparisonResult)compare:(Quiz *)otherQuiz;
 -(NSComparisonResult)reverseCompare:(Quiz *)otherQuiz;
-
+-(NSDictionary *)serialize;
 
 @end

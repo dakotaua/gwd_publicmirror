@@ -12,7 +12,6 @@
 
 @property (readwrite, strong, nonatomic) NSString *path;
 @property (readwrite, strong, nonatomic) NSMutableArray *eventList;
-@property (strong, nonatomic) NSMutableArray *eventPlist;
 
 @end
 
@@ -46,15 +45,6 @@
 - (NSMutableArray *)eventList {
     if (!_eventList) [self loadState];
     return _eventList;
-}
-
-- (NSMutableArray *)eventPlist {
-    if (!_eventPlist)
-        _eventPlist = [[NSMutableArray alloc] init];
-    
-    // TODO: Serialize the event list
-    
-    return _eventPlist;
 }
 
 #pragma mark - Event Management Methods
@@ -112,17 +102,25 @@
 
 #pragma mark - Data Management Methods
 - (void)saveState {
-    [NSKeyedArchiver archiveRootObject:self.eventPlist toFile:self.path];
+    NSMutableArray *events = [[NSMutableArray alloc] init];
+    
+    for (QuizEvent *event in self.eventList) {
+        [events addObject:[event serialize]];
+    }
+    
+    [NSKeyedArchiver archiveRootObject:events toFile:self.path];
 }
 
 - (void)loadState {
-    NSMutableArray *events = [NSKeyedUnarchiver unarchiveObjectWithFile:self.path];
+    NSArray *events = [NSKeyedUnarchiver unarchiveObjectWithFile:self.path];
     
     if (!events) {
-        events = [[NSMutableArray alloc] init];
+        self.eventList = [[NSMutableArray alloc] init];
     }
     
-    self.eventList = events;
+    else {
+        NSAssert(NO, @"[EventManager loadState] not fully implemented.");
+    }
 }
 
 @end

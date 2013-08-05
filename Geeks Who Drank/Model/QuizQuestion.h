@@ -15,5 +15,6 @@
 @property (strong, nonatomic) NSString *questionText;
 @property (readonly, strong, nonatomic) NSDictionary *jsonDict;
 
+-(NSDictionary *)serialize;
 
 @end
