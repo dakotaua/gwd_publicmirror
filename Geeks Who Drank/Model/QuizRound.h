@@ -15,7 +15,10 @@
 @property (strong, nonatomic) NSMutableArray *questions;
 @property (readonly, strong, nonatomic) NSDictionary *jsonDict;
 
--(int)roundScore;
+-(id)initFromDictionary:(NSDictionary *)serializedQuizRound;
+
 -(NSDictionary *)serialize;
+
+-(int)roundScore;
 
 @end

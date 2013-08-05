@@ -74,4 +74,18 @@
     return self;
 }
 
+-(id)initFromDictionary:(NSDictionary *)serializedQuizRound {
+    self = [self init];
+    
+    _roundNumber = [(NSNumber *) [serializedQuizRound objectForKey:@"roundNumber"] intValue];
+    [self.questions removeAllObjects];
+    
+    for (NSDictionary *serializedQuizQuestion in [serializedQuizRound objectForKey:@"quizQuestions"]) {
+        QuizQuestion *question = [[QuizQuestion alloc] initFromDictionary:serializedQuizQuestion];
+        [_questions addObject:question];
+    }
+    
+    return self;
+}
+
 @end

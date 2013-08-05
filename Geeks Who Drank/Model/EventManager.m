@@ -119,7 +119,10 @@
     }
     
     else {
-        NSAssert(NO, @"[EventManager loadState] not fully implemented.");
+        for (NSDictionary *serializedEvent in events) {
+            QuizEvent *event = [[QuizEvent alloc] initFromDictionary:serializedEvent];
+            [self.eventList addObject:event];
+        }
     }
 }
 

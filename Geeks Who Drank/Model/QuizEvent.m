@@ -67,8 +67,25 @@
 
 -(id)initWithTempValues {
     self = [self init];
-    self.quizMaster = @"Temp Quiz Master String";
-    self.location = @"Temp Location String";
+    
+    _quizMaster = @"Temp Quiz Master String";
+    _location = @"Temp Location String";
+    
+    return self;
+}
+
+-(id)initFromDictionary:(NSDictionary *)serializedEvent {
+    self = [self init];
+    
+    _quizMaster = [serializedEvent objectForKey:@"quizMaster"];
+    _location = [serializedEvent objectForKey:@"location"];
+    _quizDate = [serializedEvent objectForKey:@"quizDate"];
+    [self.quizzes removeAllObjects];
+    
+    for (NSDictionary *serializedQuiz in [serializedEvent objectForKey:@"quizzes"]) {
+        Quiz *quiz = [[Quiz alloc] initFromDictionary:serializedQuiz];
+        [_quizzes addObject:quiz];
+    }
     
     return self;
 }
