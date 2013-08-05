@@ -28,6 +28,8 @@
     return __instance;
 }
 
+// TODO: Add setSharedManager for coverage testing and use OCMock
+
 - (id)init {
     self = [super init];
     if (self) {
@@ -57,28 +59,55 @@
 
 #pragma mark - Event Management Methods
 - (void)addDefaultQuizEvent {
-    
+    QuizEvent *newEvent = (QuizEvent *) [[QuizEvent alloc] initWithTempValues];
+    [self.eventList addObject:newEvent];
 }
 
 - (void)addQuizEvent:(QuizEvent *)event {
-    
+    [self.eventList addObject:event];
 }
 
 - (void)removeQuizEvent:(QuizEvent *)event {
-    OCMockObject *obj = [OCMockObject mockForClass:[QuizEvent class]];
+    if ([self.eventList containsObject:event]) {
+        [self.eventList removeObject:event];
+    }
 }
 
 #pragma mark - Quiz Management Methods
-- (BOOL)quizEvent:(QuizEvent *)event hasTeam:(NSString *)teamName {
+- (BOOL)quizEvent:(QuizEvent *)event containsTeam:(NSString *)teamName {
+    for (Quiz *quiz in event.quizzes) {
+        if ([quiz.teamName isEqualToString:teamName]) return YES;
+    }
+    
     return NO;
 }
 
-- (void)addNewTeam:(NSString *)teamName forQuizEvent:(QuizEvent *)event {
+- (Quiz *)quizEvent:(QuizEvent *)event quizForTeamName:(NSString *)teamName {
+    if ([self quizEvent:event containsTeam:teamName]) {
+        for (Quiz *quiz in event.quizzes) {
+            if ([quiz.teamName isEqualToString:teamName]) {
+                return quiz;
+            }
+        }
+    }
     
+    return nil;
+}
+
+- (void)addNewTeam:(NSString *)teamName forQuizEvent:(QuizEvent *)event {
+    if ([self.eventList containsObject:event]) {
+        Quiz *newQuiz = [[Quiz alloc] initWithName:teamName];
+        [self.eventList addObject:newQuiz];
+    }
 }
 
 - (void)removeTeam:(NSString *)teamName forQuizEvent:(QuizEvent *)event {
-    
+    if ([self.eventList containsObject:event]) {
+        if ([self quizEvent:event containsTeam:teamName]) {
+            Quiz *quizToRemove = [self quizEvent:event quizForTeamName:teamName];
+            [self.eventList removeObject:quizToRemove];
+        }
+    }
 }
 
 #pragma mark - Data Management Methods

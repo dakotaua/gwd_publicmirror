@@ -23,7 +23,8 @@
 - (void)removeQuizEvent:(QuizEvent *)event;
 
 // Quiz Management
-- (BOOL)quizEvent:(QuizEvent *)event hasTeam:(NSString *)teamName;
+- (BOOL)quizEvent:(QuizEvent *)event containsTeam:(NSString *)teamName;
+- (Quiz *)quizEvent:(QuizEvent *)event quizForTeamName:(NSString *)teamName;
 
 - (void)addNewTeam:(NSString *)teamName forQuizEvent:(QuizEvent *)event;
 - (void)removeTeam:(NSString *)teamName forQuizEvent:(QuizEvent *)event;
