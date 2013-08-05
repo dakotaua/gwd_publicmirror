@@ -52,6 +52,7 @@
 		1DEC7FC817A1F802004C9A73 /* InitialViewBackground@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 1DEC7FC517A1F802004C9A73 /* InitialViewBackground@2x.png */; };
 		1DEC7FC917A1F802004C9A73 /* InitialViewBackground@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 1DEC7FC517A1F802004C9A73 /* InitialViewBackground@2x.png */; };
 		83E1D6A417AAC6A000608502 /* EventTableNewEventCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 83E1D6A317AAC6A000608502 /* EventTableNewEventCell.m */; };
+		83FD34F417B01DA800A13476 /* EventManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 83FD34F317B01DA800A13476 /* EventManager.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -122,6 +123,8 @@
 		1DEC7FC517A1F802004C9A73 /* InitialViewBackground@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "InitialViewBackground@2x.png"; sourceTree = "<group>"; };
 		83E1D6A217AAC6A000608502 /* EventTableNewEventCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EventTableNewEventCell.h; sourceTree = "<group>"; };
 		83E1D6A317AAC6A000608502 /* EventTableNewEventCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EventTableNewEventCell.m; sourceTree = "<group>"; };
+		83FD34F217B01DA800A13476 /* EventManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = EventManager.h; path = Model/EventManager.h; sourceTree = "<group>"; };
+		83FD34F317B01DA800A13476 /* EventManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = EventManager.m; path = Model/EventManager.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -267,6 +270,8 @@
 				1D4B3EC317836E9000C9F649 /* QuizRound.m */,
 				1D4B3EBF17836E4500C9F649 /* QuizQuestion.h */,
 				1D4B3EC017836E4500C9F649 /* QuizQuestion.m */,
+				83FD34F217B01DA800A13476 /* EventManager.h */,
+				83FD34F317B01DA800A13476 /* EventManager.m */,
 			);
 			name = Model;
 			sourceTree = "<group>";
@@ -426,6 +431,7 @@
 				1D9B30411798512D00F6BA8B /* EventListViewController.m in Sources */,
 				1D9B3044179851F600F6BA8B /* EventTableEventCell.m in Sources */,
 				83E1D6A417AAC6A000608502 /* EventTableNewEventCell.m in Sources */,
+				83FD34F417B01DA800A13476 /* EventManager.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

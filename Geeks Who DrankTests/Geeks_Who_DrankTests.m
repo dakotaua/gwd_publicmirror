@@ -7,6 +7,7 @@
 //
 
 #import "Geeks_Who_DrankTests.h"
+#import "EventManager.h"
 
 @implementation Geeks_Who_DrankTests
 
@@ -24,9 +25,11 @@
     [super tearDown];
 }
 
-- (void)testExample
+- (void)testEventManager
 {
-    STAssertEquals(2, 2, @"Hooray two is two.");
+    EventManager *eventManager = [EventManager sharedManager];
+    
+    [eventManager addDefaultQuizEvent];
 }
 
 @end
