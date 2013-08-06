@@ -7,26 +7,20 @@
 //
 
 #import "Geeks_Who_DrankTests.h"
+#import "EventManager.h"
 
 @implementation Geeks_Who_DrankTests
 
-- (void)setUp
-{
+- (void)setUp {
     [super setUp];
     
     // Set-up code here.
 }
 
-- (void)tearDown
-{
+- (void)tearDown {
     // Tear-down code here.
     
     [super tearDown];
-}
-
-- (void)testExample
-{
-    STAssertEquals(2, 2, @"Hooray two is two.");
 }
 
 @end

@@ -18,10 +18,8 @@
 @implementation QuizRound
 
 -(NSDictionary *)jsonDict {
-    _jsonDict = @{
-        @"round_number": [NSNumber numberWithInt:self.roundNumber],
-           @"questions": [[NSMutableArray alloc] init]
-    };
+    _jsonDict = @{@"round_number": [NSNumber numberWithInt:self.roundNumber],
+                  @"questions": [[NSMutableArray alloc] init]};
     
     for (id q in self.questions) {
         if ([q isMemberOfClass:[QuizQuestion class]]) {
@@ -31,6 +29,17 @@
     }
 
     return _jsonDict;
+}
+
+-(NSDictionary *)serialize {
+    NSMutableArray *questions = [[NSMutableArray alloc] init];
+    
+    for (QuizQuestion *question in self.questions) {
+        [questions addObject:[question serialize]];
+    }
+
+    return @{@"roundNumber":[NSNumber numberWithInt:self.roundNumber],
+             @"questions":questions};
 }
 
 -(NSMutableArray *)questions {
@@ -62,6 +71,20 @@
             [self.questions addObject:question];
         }
     }
+    return self;
+}
+
+-(id)initFromDictionary:(NSDictionary *)serializedQuizRound {
+    self = [self init];
+    
+    _roundNumber = [(NSNumber *) [serializedQuizRound objectForKey:@"roundNumber"] intValue];
+    [self.questions removeAllObjects];
+    
+    for (NSDictionary *serializedQuizQuestion in [serializedQuizRound objectForKey:@"quizQuestions"]) {
+        QuizQuestion *question = [[QuizQuestion alloc] initFromDictionary:serializedQuizQuestion];
+        [_questions addObject:question];
+    }
+    
     return self;
 }
 

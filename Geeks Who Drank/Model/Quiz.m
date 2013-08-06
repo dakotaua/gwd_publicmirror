@@ -35,6 +35,18 @@
     return _jsonDict;
 }
 
+-(NSDictionary *)serialize {
+    NSMutableArray *quizRounds = [[NSMutableArray alloc] init];
+    
+    for (QuizRound *quizRound in self.quizRounds) {
+        [quizRounds addObject:[quizRound serialize]];
+    }
+    
+    return @{@"teamName":self.teamName,
+             @"jokerRound":[NSNumber numberWithInt:self.jokerRound],
+             @"quizRounds":quizRounds};
+}
+
 -(NSComparisonResult)reverseCompare:(Quiz *)otherQuiz{
     NSNumber* myScore = [NSNumber numberWithInt:[self quizScore]];
     NSNumber* otherScore = [NSNumber numberWithInt:[otherQuiz quizScore]];
@@ -93,6 +105,21 @@
     self = [self init];
     if (self)
         self.teamName = teamName;
+    return self;
+}
+
+-(id)initFromDictionary:(NSDictionary *)serializedQuiz {
+    self = [self init];
+    
+    _teamName = [serializedQuiz objectForKey:@"teamName"];
+    _jokerRound = [(NSNumber *) [serializedQuiz objectForKey:@"jokerRound"] intValue];
+    [self.quizRounds removeAllObjects];
+    
+    for (NSDictionary *serializedQuizRound in [serializedQuiz objectForKey:@"quizRounds"]) {
+        QuizRound *quizRound = [[QuizRound alloc] initFromDictionary:serializedQuizRound];
+        [_quizRounds addObject:quizRound];
+    }
+    
     return self;
 }
 

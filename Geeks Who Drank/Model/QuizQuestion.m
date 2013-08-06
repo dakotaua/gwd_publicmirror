@@ -16,13 +16,25 @@
 
 @implementation QuizQuestion
 
+-(id)initFromDictionary:(NSDictionary *)serializedQuizQuestion {
+    self = [self init];
+    
+    _questionNumber = [(NSNumber *) [serializedQuizQuestion objectForKey:@"questionNumber"] intValue];
+    _score = [(NSNumber *) [serializedQuizQuestion objectForKey:@"score"] intValue];
+    
+    return self;
+}
+
 -(NSDictionary *)jsonDict {
-    _jsonDict = @{
-        @"question_number": [NSNumber numberWithInt:self.questionNumber],
-                  @"score": [NSNumber numberWithInt:self.score]
-    };
+    _jsonDict = @{@"question_number": [NSNumber numberWithInt:self.questionNumber],
+                  @"score": [NSNumber numberWithInt:self.score]};
     
     return _jsonDict;
+}
+
+-(NSDictionary *)serialize {
+    return @{@"questionNumber": [NSNumber numberWithInt:self.questionNumber],
+             @"score": [NSNumber numberWithInt:self.score]};
 }
 
 @end

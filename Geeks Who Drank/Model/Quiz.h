@@ -17,9 +17,13 @@
 @property (readonly, strong, nonatomic) NSDictionary *jsonDict;
 
 -(int)quizScore;
+
 -(id)initWithName:(NSString*)teamName;
+-(id)initFromDictionary:(NSDictionary *)serializedQuiz;
+
+-(NSDictionary *)serialize;
+
 -(NSComparisonResult)compare:(Quiz *)otherQuiz;
 -(NSComparisonResult)reverseCompare:(Quiz *)otherQuiz;
-
 
 @end
