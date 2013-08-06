@@ -17,9 +17,17 @@
 
 @implementation EventManager
 
+static dispatch_once_t onceToken;
+static EventManager *__instance = nil;
+
+#pragma mark - Properties
+- (NSMutableArray *)eventList {
+    if (!_eventList) [self loadState];
+    return _eventList;
+}
+
+#pragma mark - Initializers and Singleton
 + (EventManager *)sharedManager {
-    static EventManager *__instance;
-    static dispatch_once_t onceToken;
     dispatch_once(&onceToken, ^{
         __instance = [[EventManager alloc] init];
     });
@@ -27,7 +35,10 @@
     return __instance;
 }
 
-// TODO: Add setSharedManager for coverage testing and use OCMock
++ (void)setSharedManager:(EventManager *)instance {
+    onceToken = 0;
+    __instance = instance;
+}
 
 - (id)init {
     self = [super init];
@@ -41,13 +52,18 @@
     return self;
 }
 
-#pragma mark - Properties
-- (NSMutableArray *)eventList {
-    if (!_eventList) [self loadState];
-    return _eventList;
+#pragma mark - Event Management Methods
+- (QuizEvent *)eventForLocation:(NSString *)location onDate:(NSDate *)date {
+    for (QuizEvent *event in self.eventList) {
+        if ([event.location isEqualToString:location] &&
+            [event.quizDate isEqualToDate:date]) {
+            return event;
+        }
+    }
+    
+    return nil;
 }
 
-#pragma mark - Event Management Methods
 - (void)addDefaultQuizEvent {
     QuizEvent *newEvent = (QuizEvent *) [[QuizEvent alloc] initWithTempValues];
     [self.eventList addObject:newEvent];
@@ -87,7 +103,7 @@
 - (void)addNewTeam:(NSString *)teamName forQuizEvent:(QuizEvent *)event {
     if ([self.eventList containsObject:event]) {
         Quiz *newQuiz = [[Quiz alloc] initWithName:teamName];
-        [self.eventList addObject:newQuiz];
+        [event.quizzes addObject:newQuiz];
     }
 }
 
@@ -95,7 +111,7 @@
     if ([self.eventList containsObject:event]) {
         if ([self quizEvent:event containsTeam:teamName]) {
             Quiz *quizToRemove = [self quizEvent:event quizForTeamName:teamName];
-            [self.eventList removeObject:quizToRemove];
+            [event.quizzes removeObject:quizToRemove];
         }
     }
 }
@@ -119,6 +135,7 @@
     }
     
     else {
+        self.eventList = [[NSMutableArray alloc] init];
         for (NSDictionary *serializedEvent in events) {
             QuizEvent *event = [[QuizEvent alloc] initFromDictionary:serializedEvent];
             [self.eventList addObject:event];

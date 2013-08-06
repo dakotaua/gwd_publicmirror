@@ -14,11 +14,14 @@
 @property (readonly, strong, nonatomic) NSString *path;
 @property (readonly, strong, nonatomic) NSMutableArray *eventList; // Of type Event
 
+// Initialization
 + (EventManager *)sharedManager;
++ (void)setSharedManager:(EventManager *)instance; // For testing only
 
 // Event Management
-- (void)addDefaultQuizEvent;
+- (QuizEvent *)eventForLocation:(NSString *)location onDate:(NSDate *)date;
 
+- (void)addDefaultQuizEvent;
 - (void)addQuizEvent:(QuizEvent *)event;
 - (void)removeQuizEvent:(QuizEvent *)event;
 
