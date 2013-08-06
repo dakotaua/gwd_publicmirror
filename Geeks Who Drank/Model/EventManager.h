@@ -20,6 +20,7 @@
 
 // Event Management
 - (QuizEvent *)eventForLocation:(NSString *)location onDate:(NSDate *)date;
+- (NSUInteger)eventCount;
 
 - (void)addDefaultQuizEvent;
 - (void)addQuizEvent:(QuizEvent *)event;
@@ -28,6 +29,7 @@
 // Quiz Management
 - (BOOL)quizEvent:(QuizEvent *)event containsTeam:(NSString *)teamName;
 - (Quiz *)quizEvent:(QuizEvent *)event quizForTeamName:(NSString *)teamName;
+- (NSUInteger)quizCountForEvent:(QuizEvent *)event;
 
 - (void)addNewTeam:(NSString *)teamName forQuizEvent:(QuizEvent *)event;
 - (void)removeTeam:(NSString *)teamName forQuizEvent:(QuizEvent *)event;

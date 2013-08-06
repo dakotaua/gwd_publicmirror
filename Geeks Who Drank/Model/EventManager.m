@@ -37,6 +37,8 @@ static EventManager *__instance = nil;
 
 + (void)setSharedManager:(EventManager *)instance {
     onceToken = 0;
+    __instance.path = nil;
+    __instance.eventList = nil;
     __instance = instance;
 }
 
@@ -64,6 +66,10 @@ static EventManager *__instance = nil;
     return nil;
 }
 
+- (NSUInteger)eventCount {
+    return [self.eventList count];
+}
+
 - (void)addDefaultQuizEvent {
     QuizEvent *newEvent = (QuizEvent *) [[QuizEvent alloc] initWithTempValues];
     [self.eventList addObject:newEvent];
@@ -89,6 +95,11 @@ static EventManager *__instance = nil;
 }
 
 - (Quiz *)quizEvent:(QuizEvent *)event quizForTeamName:(NSString *)teamName {
+    // Return nil if this event is unmanaged.
+    if (![self.eventList containsObject:event]) {
+        return nil;
+    }
+    
     if ([self quizEvent:event containsTeam:teamName]) {
         for (Quiz *quiz in event.quizzes) {
             if ([quiz.teamName isEqualToString:teamName]) {
@@ -98,6 +109,10 @@ static EventManager *__instance = nil;
     }
     
     return nil;
+}
+
+- (NSUInteger)quizCountForEvent:(QuizEvent *)event {
+    return [event.quizzes count];
 }
 
 - (void)addNewTeam:(NSString *)teamName forQuizEvent:(QuizEvent *)event {

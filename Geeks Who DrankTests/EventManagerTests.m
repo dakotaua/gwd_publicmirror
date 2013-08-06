@@ -34,103 +34,111 @@
         [fileManager removeItemAtPath:eventManager.path error:&error];
     }
     
+    if ([eventManager eventCount]) {
+        [eventManager.eventList removeAllObjects];
+    }
+    
     STAssertNil(error, @"Got an error when removing %@: %@", eventManager.path, error);
     
     [super tearDown];
 }
 
 - (void)testEventManagerSingleton {
-    EventManager *eventManager = [EventManager sharedManager];
-    STAssertTrue([eventManager isKindOfClass:[EventManager class]], @"Failed: eventManager is not an EventManager?");
-    
-    EventManager *em2 = [EventManager sharedManager];
-    STAssertTrue(em2 == eventManager, @"Failed: Something is messed up with the singleton initializer.");
-    
-    [EventManager setSharedManager:nil];
-    eventManager = [EventManager sharedManager];
-    STAssertNotNil(eventManager, @"Failed: Something is messed up with the singleton reset class method.");
-}
-
-- (void)testEventManagerAddEventBasic {
-    EventManager *eventManager = [EventManager sharedManager];
-    
-    [eventManager addDefaultQuizEvent];
-    
-    int count = [eventManager.eventList count];
-    
-    STAssertEquals(count, 1, @"An event was not added to the EventManager properly.");
-    
-    [EventManager setSharedManager:nil];
-}
-
-- (void)testEventManagerSingletonAdd {
-    EventManager *eventManager = [EventManager sharedManager];
-    
-    [eventManager addDefaultQuizEvent];
-    int count = [eventManager.eventList count];
-    
-    STAssertEquals(1, count, @"List was not emptied properly before adding a new event.");
     
     EventManager *em = [EventManager sharedManager];
     
-    count = [em.eventList count];
-    STAssertEquals(1, count, @"Count did not carry over in the singleton share.");
-    
-    [em addDefaultQuizEvent];
-    count = [em.eventList count];
-    STAssertEquals(2, count, @"Count did not increment properly when a second event was added.");
-    
-    [eventManager addDefaultQuizEvent];
-    STAssertEquals([em.eventList count], [eventManager.eventList count], @"Counts were not the same.");
-    
-    [EventManager setSharedManager:nil];
+    STAssertEquals((NSUInteger) 0, [em eventCount], @"Shared manager was not initialized properly.");
 }
 
-- (void)testEventManagerAddRemoveSpecificEvents {
-    EventManager *eventManager = [EventManager sharedManager];
-    QuizEvent *e1 = [[QuizEvent alloc] initWithTempValues];
-    QuizEvent *e2 = [[QuizEvent alloc] initWithTempValues];
-    QuizEvent *e3 = [[QuizEvent alloc] initWithTempValues];
+- (void)testEventManagerAddEventBasic {
     
-    e2.location = @"Not the default location string.";
-    e3.location = @"Also a different string.";
+    EventManager *em = [EventManager sharedManager];
+    [em addDefaultQuizEvent];
+    STAssertEquals((NSUInteger) 1, [em eventCount], @"Failed to add.");
     
-    STAssertFalse([e1.location isEqualToString:e2.location], @"Location strings were not different");
-    STAssertFalse([e1.location isEqualToString:e3.location], @"Location strings were not different");
-    STAssertFalse([e2.location isEqualToString:e3.location], @"Location strings were not different");
+    [em addDefaultQuizEvent];
+    STAssertEquals((NSUInteger) 2, [em eventCount], @"Failed to add a second event.");
     
-    // Test removing from an empty list
-    [eventManager removeQuizEvent:e1];
-    // Should not crash...?
+    STAssertEquals((NSUInteger) 2, [em eventCount], @"Failed to maintain count.");
+}
+
+- (void)testEventManagerSingletonAddEvents {
+    EventManager *em = [EventManager sharedManager];
     
-    [eventManager addQuizEvent:e1];
-    [eventManager addQuizEvent:e2];
-    [eventManager addQuizEvent:e3];
+    [em addDefaultQuizEvent];
     
-    int count = [eventManager.eventList count];
-    STAssertEquals(3, count, @"An event was not added properly.");
+    EventManager *other = [EventManager sharedManager];
     
-    [eventManager removeQuizEvent:e1];
-    count = [eventManager.eventList count];
-    STAssertEquals(2, count, @"Event 1 was not removed properly.");
+    STAssertEquals((NSUInteger) 1, [other eventCount], @"Count did not carry over.");
+    STAssertEquals([em eventCount], [other eventCount], @"Counts did not match.");
     
-    [eventManager removeQuizEvent:e1];
-    count = [eventManager.eventList count];
-    STAssertEquals(2, count, @"Event 2 was removed twice.");
+    [other addDefaultQuizEvent];
     
-    [eventManager removeQuizEvent:e2];
-    count = [eventManager.eventList count];
-    STAssertEquals(1, count, @"Event 2 was not removed properly.");
+    STAssertEquals((NSUInteger) 2, [em eventCount], @"Add did not affect first instance.");
+    STAssertEquals([em eventCount], [other eventCount], @"Counts did not match.");
+
+}
+
+- (void)testEventManagerSingletonAddRemoveQuizzes {
+    EventManager *em = [EventManager sharedManager];
     
-    [eventManager addQuizEvent:e1];
-    count = [eventManager.eventList count];
-    STAssertEquals(2, count, @"Event 1 was not re-added properly.");
+    [em addDefaultQuizEvent];
+    [em addDefaultQuizEvent];
     
-    [EventManager setSharedManager:nil];
+    QuizEvent *event = [em.eventList objectAtIndex:0];
+    QuizEvent *other = [em.eventList objectAtIndex:1];
+    
+    [em addNewTeam:@"Team One" forQuizEvent:event];
+    [em addNewTeam:@"Team Two" forQuizEvent:event];
+    
+    [em addNewTeam:@"Team Three" forQuizEvent:other];
+    [em addNewTeam:@"Team Four" forQuizEvent:other];
+    
+    EventManager *two = [EventManager sharedManager];
+    STAssertEquals((NSUInteger) 2, [two quizCountForEvent:other], @"A quiz was not added to the correct event.");
+    STAssertEquals((NSUInteger) 2, [two quizCountForEvent:event], @"A quiz was not added to the correct event.");
+    STAssertFalse([em.eventList objectAtIndex:0] == [two.eventList objectAtIndex:1], @"Got the same objects.");
+    STAssertTrue([em.eventList objectAtIndex:0] == [two.eventList objectAtIndex:0], @"Got different objects.");
+}
+
+- (void)testEventManagerAddFromDictAndAddRemoveSpecificEvents {
+    
+    EventManager *em = [EventManager sharedManager];
+    
+    QuizEvent *event = [[QuizEvent alloc] initWithTempValues];
+    event.location = @"Nonstandard location.";
+    
+    STAssertNoThrow([em removeQuizEvent:event], @"Error was thrown when attempting to remove from empty manager.");
+    
+    [em addQuizEvent:event];
+    [em addDefaultQuizEvent];
+    
+    STAssertEquals((NSUInteger) 2, [em eventCount], @"Verifying count before adding from dict.");
+    
+    [em addQuizEvent:[[QuizEvent alloc] initFromDictionary:@{@"quizMaster":@"Jeff",
+                      @"location":@"Another fake location",
+                      @"quizDate":[NSDate date],
+                      @"quizzes":@[]}]];
+    
+    event = [em.eventList objectAtIndex:0];
+    QuizEvent *other = [em.eventList objectAtIndex:1];
+    
+    STAssertEquals((NSUInteger) 3, [em eventCount], @"Failed adding from dict.");
+    [em removeQuizEvent:event];
+    STAssertEquals((NSUInteger) 2, [em eventCount], @"Event was not removed properly from the list.");
+    
+    STAssertNoThrow([em removeQuizEvent:event], @"Error was thrown when removing an item that is not in the list.");
+    STAssertEquals((NSUInteger) 2, [em eventCount], @"Count is wrong after removing a nonexistent item.");
+    
+    [em removeQuizEvent:other];
+    STAssertEquals((NSUInteger) 1, [em eventCount], @"Count is wrong after removing a second real item.");
+    
+    [em addQuizEvent:event];
+    STAssertEquals((NSUInteger) 2, [em eventCount], @"Adding a previously removed item failed.");
+    
 }
 
 - (void)testEventManagerEventSearch {
-    EventManager *eventManager = [EventManager sharedManager];
     
     NSString *quizMaster = @"Ralph";
     NSString *location = @"The Pub";
@@ -143,69 +151,130 @@
                         @"quizDate":quizDate,
                         @"quizzes":quizzes}];
     
-    [eventManager addQuizEvent:event];
-    int count = [eventManager.eventList count];
-    STAssertEquals(1, count, @"Event was not added properly.");
+    EventManager *em = [EventManager sharedManager];
+    [em addQuizEvent:event];
     
-    QuizEvent *search = [eventManager eventForLocation:@"Fake location" onDate:[NSDate date]];
+    STAssertEquals((NSUInteger) 1, [em eventCount], @"Item was not added from dict.");
     
-    STAssertNil(search, @"Found an object that does not exist.");
+    QuizEvent *retrieved = [em.eventList objectAtIndex:0];
+    STAssertEqualObjects(event, retrieved, @"Object is not the correct object.");
+    STAssertTrue([retrieved.quizMaster isEqualToString:quizMaster], @"quizMaster values do not match.");
+    STAssertTrue([retrieved.location isEqualToString:location], @"location values do not match.");
+    STAssertTrue([retrieved.quizDate isEqualToDate:quizDate], @"quizDate values do not match.");
+    STAssertTrue([retrieved.quizzes isEqualToArray:quizzes], @"quizzes arrays do not match.");
     
-    search = [eventManager eventForLocation:@"The Pub" onDate:quizDate];
-    STAssertNotNil(search, @"Did not find an object that should exist.");
+    QuizEvent *search = [em eventForLocation:location onDate:quizDate];
+    STAssertNotNil(search, @"Search should have found a quiz.");
+    STAssertTrue([search.quizMaster isEqualToString:quizMaster], @"quizMaster values do not match.");
+    STAssertTrue([search.location isEqualToString:location], @"location values do not match.");
+    STAssertTrue([search.quizDate isEqualToDate:quizDate], @"quizDate values do not match.");
+    STAssertTrue([search.quizzes isEqualToArray:quizzes], @"quizzes arrays do not match.");
     
-    [EventManager setSharedManager:nil];
+    search = [em eventForLocation:@"Fake Location" onDate:[NSDate date]];
+    STAssertNil(search, @"Search should not have found a quiz.");
 }
 
 - (void)testEventManagerTeamsAndTeamSearch {
-    EventManager *eventManager = [EventManager sharedManager];
+    EventManager *em = [EventManager sharedManager];
+    [em addDefaultQuizEvent];
+    [em addDefaultQuizEvent];
+    QuizEvent *event = [em.eventList objectAtIndex:1];
+    event.location = @"A Different Location";
     
-    [eventManager addQuizEvent:[[QuizEvent alloc] initWithTempValues]];
-    [eventManager addQuizEvent:[[QuizEvent alloc] initWithTempValues]];
-    QuizEvent *e1 = [eventManager.eventList objectAtIndex:0];
-    QuizEvent *e2 = [eventManager.eventList objectAtIndex:1];
+    QuizEvent *other = [em.eventList objectAtIndex:0];
+    [em addNewTeam:@"Team One" forQuizEvent:event];
+    [em addNewTeam:@"Team Three" forQuizEvent:event];
+    [em addNewTeam:@"Team Two" forQuizEvent:other];
+    [em addNewTeam:@"Team Four" forQuizEvent:other];
     
-    [eventManager addNewTeam:@"Team One" forQuizEvent:e1];
-    [eventManager addNewTeam:@"Team Two" forQuizEvent:e1];
-    [eventManager addNewTeam:@"Team Three" forQuizEvent:e2];
-    [eventManager addNewTeam:@"Team Four" forQuizEvent:e2];
+    EventManager *anotherView = [EventManager sharedManager];
+    STAssertFalse([anotherView quizEvent:[anotherView.eventList objectAtIndex:0] containsTeam:@"Team One"], @"Found a team in the wrong event.");
+    STAssertTrue([anotherView quizEvent:[anotherView.eventList objectAtIndex:0] containsTeam:@"Team Two"], @"Did not find a team in the correct event.");
+    STAssertFalse([anotherView quizEvent:[anotherView.eventList objectAtIndex:0] containsTeam:@"Team Three"], @"Found a team in the wrong event.");
+    STAssertTrue([anotherView quizEvent:[anotherView.eventList objectAtIndex:0] containsTeam:@"Team Four"], @"Did not find a team in the correct event.");
     
-    STAssertFalse([eventManager quizEvent:e1 containsTeam:@"Team Three"], @"Found a team in the wrong event");
-    STAssertTrue([eventManager quizEvent:e2 containsTeam:@"Team Three"], @"Could find a team in the correct event");
+    STAssertNotNil([anotherView quizEvent:event quizForTeamName:@"Team One"], @"Could not find a quiz for a team in the correct event.");
+    STAssertNil([anotherView quizEvent:event quizForTeamName:@"Team Two"], @"Found a quiz for a team in a different event.");
+    STAssertNotNil([anotherView quizEvent:event quizForTeamName:@"Team Three"], @"Could not find a quiz for a team in the correct event.");
+    STAssertNil([anotherView quizEvent:event quizForTeamName:@"Team Four"], @"Found a quiz for a team in a different event.");
     
-    [eventManager removeTeam:@"Team Two" forQuizEvent:e1];
+    STAssertNil([anotherView quizEvent:other quizForTeamName:@"Team One"], @"Found a quiz for a team in a different event.");
+    STAssertNotNil([anotherView quizEvent:other quizForTeamName:@"Team Two"], @"Could not find a quiz for a team in the correct event.");
+    STAssertNil([anotherView quizEvent:other quizForTeamName:@"Team Three"], @"Found a quiz for a team in a different event.");
+    STAssertNotNil([anotherView quizEvent:other quizForTeamName:@"Team Four"], @"Could not find a quiz for a team in the correct event.");
     
-    STAssertFalse([eventManager quizEvent:e1 containsTeam:@"Team Two"], @"Found a team that should have been deleted.");
+    STAssertNoThrow([em removeTeam:@"Team One" forQuizEvent:other], @"Threw an error when removing a team from the wrong event.");
+    [em removeTeam:@"Team One" forQuizEvent:event];
+    STAssertNil([em quizEvent:event quizForTeamName:@"Team One"], @"Team One was not removed from the event.");
     
-    Quiz *search = [eventManager quizEvent:e1 quizForTeamName:@"Team Two"];
+    [anotherView removeQuizEvent:event];
     
-    STAssertNil(search, @"Found a quiz for a nonexistent team.");
+    STAssertFalse([em.eventList containsObject:event], @"Event was not removed properly via singleton.");
+    STAssertNil([em quizEvent:event quizForTeamName:@"Team One"], @"Searched an instantiated event that is not in the event manager.");
+    STAssertNil([em quizEvent:event quizForTeamName:@"Team Two"], @"Searched an instantiated event for a missing value that is not in the event manager.");
+    STAssertNil([em quizEvent:event quizForTeamName:@"Team Three"], @"Searched an instantiated event that is not in the event manager.");
+    STAssertNil([em quizEvent:event quizForTeamName:@"Team Four"], @"Searched an instantiated event for a missing value that is not in the event manager.");
     
-    search = [eventManager quizEvent:e2 quizForTeamName:@"Team Four"];
-    STAssertNotNil(search, @"Did not find a quiz that should have been found.");
-    STAssertTrue([search.teamName isEqualToString:@"Team Four"], @"Team name for found team is incorrect.");
+    STAssertNil([em quizEvent:other quizForTeamName:@"Team One"], @"Found a team that belongs to a removed event.");
+    STAssertNotNil([em quizEvent:other quizForTeamName:@"Team Two"], @"Should have found this team.");
+    STAssertNil([em quizEvent:other quizForTeamName:@"Team Three"], @"Found a team that belongs to a removed event.");
+    STAssertNotNil([em quizEvent:other quizForTeamName:@"Team Four"], @"Should have found this team.");
     
-    [EventManager setSharedManager:nil];
 }
 
-- (void)testEventManagerState {
+- (void)testEventManagerStateAndReset {
+    
     EventManager *em = [EventManager sharedManager];
-    [em addQuizEvent:[[QuizEvent alloc] initWithTempValues]];
-    [em addNewTeam:@"Team One" forQuizEvent:[em.eventList objectAtIndex:0]];
-    [em addNewTeam:@"Team Two" forQuizEvent:[em.eventList objectAtIndex:0]];
+    [em addDefaultQuizEvent];
+    QuizEvent *event = [em.eventList objectAtIndex:0];
+    
+    [em addNewTeam:@"Team One" forQuizEvent:event];
+    [em addNewTeam:@"Team Two" forQuizEvent:event];
     
     [em saveState];
-    [EventManager setSharedManager:nil];
-    em = [EventManager sharedManager];
+    [em.eventList removeAllObjects];
+    STAssertEquals((NSUInteger) 0, [em eventCount], @"Events not removed from manager.");
     [em loadState];
+    STAssertEquals((NSUInteger) 1, [em eventCount], @"Events not loaded properly from state.");
     
-    QuizEvent *event = [em.eventList objectAtIndex:0];
-    STAssertNotNil(event, @"Load state did not return any quizzes");
-    Quiz *search = [em quizEvent:event quizForTeamName:@"Team One"];
-    STAssertNotNil(search, @"Could not find first quiz from loaded state.");
-    search = [em quizEvent:event quizForTeamName:@"Team Two"];
-    STAssertNotNil(search, @"Could not find second quiz from loaded state.");
+    // Verify state
+    event = [em.eventList objectAtIndex:0];
+    STAssertTrue([em quizEvent:event containsTeam:@"Team One"], @"Team One missing from state load.");
+    STAssertTrue([em quizEvent:event containsTeam:@"Team Two"], @"Team Two missing from state load.");
+    STAssertFalse([em quizEvent:event containsTeam:@"Team Six"], @"Found a team that should not have been loaded.");
     
+    [em.eventList removeAllObjects];
+    
+    // Reset the shared manager instance
+    [EventManager setSharedManager:nil];
+    
+    // Should reload the state from disk
+    em = [EventManager sharedManager];
+    STAssertEquals((NSUInteger) 1, [em eventCount], @"Events not loaded properly from state.");
+    
+    // Verify state
+    event = [em.eventList objectAtIndex:0];
+    STAssertTrue([em quizEvent:event containsTeam:@"Team One"], @"Team One missing from state load.");
+    STAssertTrue([em quizEvent:event containsTeam:@"Team Two"], @"Team Two missing from state load.");
+    STAssertFalse([em quizEvent:event containsTeam:@"Team Six"], @"Found a team that should not have been loaded.");
+
+    NSString *path = em.path;
+    // Reset the shared manager instance
+    [EventManager setSharedManager:nil];
+    
+    // Delete the state from disk.
+    NSError *error = nil;
+    NSFileManager *fileManager = [NSFileManager defaultManager];
+    
+    if ([fileManager fileExistsAtPath:path]) {
+        [fileManager removeItemAtPath:path error:&error];
+    }
+    
+    STAssertNil(error, @"Got an error when removing %@: %@", path, error);
+    
+    em = [EventManager sharedManager];
+    
+    STAssertEquals((NSUInteger) 0, [em eventCount], @"State not properly cleared from disk.");
     
 }
 
