@@ -7,7 +7,6 @@
 //
 
 #import "Geeks_Who_DrankTests.h"
-#import "EventManager.h"
 
 @implementation Geeks_Who_DrankTests
 
